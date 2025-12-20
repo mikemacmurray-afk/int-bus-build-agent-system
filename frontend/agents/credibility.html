@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credibility Agent - BusinessBuild Agentic System</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <style>
+        .agent-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .agent-header {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .agent-header h1 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .breadcrumb {
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-blue);
+        }
+        
+        .input-section, .output-section {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .input-tabs {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--dark-border);
+        }
+        
+        .tab {
+            padding: var(--space-sm) var(--space-md);
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .tab:hover {
+            color: var(--text-primary);
+        }
+        
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--space-sm);
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+        
+        .process-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .process-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .process-btn:disabled {
+            background: var(--dark-border);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .proof-library {
+            display: grid;
+            gap: var(--space-md);
+        }
+        
+        .proof-card {
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            transition: all 0.2s ease;
+        }
+        
+        .proof-card:hover {
+            border-color: var(--primary-blue);
+        }
+        
+        .proof-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .proof-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary-blue);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .proof-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+        
+        .proof-tag {
+            padding: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .stat-box {
+            background: var(--dark-bg);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--text-muted);
+        }
+        
+        .processing {
+            display: none;
+            text-align: center;
+            padding: var(--space-lg);
+        }
+        
+        .processing.active {
+            display: block;
+        }
+        
+        .spinner-large {
+            border: 4px solid var(--dark-border);
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--space-md);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">← Back to Dashboard</a>
+            </div>
+            <h1>📊 Credibility Agent</h1>
+            <p class="tagline">Build Trust Through Evidence</p>
+        </div>
+    </header>
+
+    <main class="agent-page">
+        <!-- Agent Overview -->
+        <div class="agent-header">
+            <h1>
+                <span>📊</span>
+                Credibility Agent
+            </h1>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-md);">
+                Extract and organize proof of results from all client interactions. Automatically build your wall of proof, testimonial vault, and case study library.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="total-proof">0</div>
+                    <div class="stat-label">Total Proof Assets</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="this-month">0</div>
+                    <div class="stat-label">Added This Month</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="revenue-wins">0</div>
+                    <div class="stat-label">Revenue Wins</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="avg-sentiment">0%</div>
+                    <div class="stat-label">Positive Sentiment</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <h2>📥 Import Proof</h2>
+            
+            <div class="input-tabs">
+                <button class="tab active" onclick="switchTab('email')">Email</button>
+                <button class="tab" onclick="switchTab('manual')">Manual Entry</button>
+                <button class="tab" onclick="switchTab('form')">Form Response</button>
+                <button class="tab" onclick="switchTab('file')">File Upload</button>
+            </div>
+
+            <!-- Email Import Tab -->
+            <div id="email-tab" class="tab-content active">
+                <div class="form-group">
+                    <label>Email Source</label>
+                    <select id="email-source">
+                        <option value="gmail">Gmail</option>
+                        <option value="outlook">Outlook</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Search Query (optional)</label>
+                    <input type="text" id="email-query" placeholder="e.g., testimonial, success, win, result">
+                    <small style="color: var(--text-muted); font-size: var(--font-size-sm);">
+                        Leave blank to scan recent emails
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>Date Range</label>
+                    <select id="email-date-range">
+                        <option value="7">Last 7 days</option>
+                        <option value="30">Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                        <option value="all">All time</option>
+                    </select>
+                </div>
+                <button class="process-btn" onclick="importFromEmail()">
+                    🔍 Scan Emails for Proof
+                </button>
+            </div>
+
+            <!-- Manual Entry Tab -->
+            <div id="manual-tab" class="tab-content">
+                <div class="form-group">
+                    <label>Client/Source Name</label>
+                    <input type="text" id="manual-client" placeholder="e.g., John Doe, Acme Corp">
+                </div>
+                <div class="form-group">
+                    <label>Result/Outcome</label>
+                    <input type="text" id="manual-result" placeholder="e.g., Doubled revenue in 8 weeks">
+                </div>
+                <div class="form-group">
+                    <label>Testimonial/Quote</label>
+                    <textarea id="manual-quote" placeholder="Paste the full testimonial or quote here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Context (optional)</label>
+                    <textarea id="manual-context" placeholder="Additional context about the client, their situation, or the transformation..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Proof Type</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="type-revenue" value="revenue-win">
+                            <label for="type-revenue">Revenue Win</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="type-time" value="time-saved">
+                            <label for="type-time">Time Saved</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="type-confidence" value="confidence-gain">
+                            <label for="type-confidence">Confidence Gain</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="type-transformation" value="transformation">
+                            <label for="type-transformation">Transformation</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="process-btn" onclick="addManualProof()">
+                    ✅ Add to Proof Library
+                </button>
+            </div>
+
+            <!-- Form Response Tab -->
+            <div id="form-tab" class="tab-content">
+                <div class="form-group">
+                    <label>Form Platform</label>
+                    <select id="form-source">
+                        <option value="typeform">Typeform</option>
+                        <option value="googleforms">Google Forms</option>
+                        <option value="surveymonkey">SurveyMonkey</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Form Data (CSV or JSON)</label>
+                    <textarea id="form-data" placeholder="Paste form responses here..."></textarea>
+                </div>
+                <button class="process-btn" onclick="processFormData()">
+                    📊 Process Form Responses
+                </button>
+            </div>
+
+            <!-- File Upload Tab -->
+            <div id="file-tab" class="tab-content">
+                <div class="form-group">
+                    <label>Upload File</label>
+                    <input type="file" id="file-upload" accept=".txt,.csv,.json,.eml,.msg">
+                    <small style="color: var(--text-muted); font-size: var(--font-size-sm);">
+                        Supported: TXT, CSV, JSON, Email files (.eml, .msg)
+                    </small>
+                </div>
+                <button class="process-btn" onclick="processFile()">
+                    📎 Process File
+                </button>
+            </div>
+        </div>
+
+        <!-- Processing Status -->
+        <div id="processing" class="processing">
+            <div class="spinner-large"></div>
+            <p style="color: var(--text-secondary);">Processing and extracting proof...</p>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h2>📚 Proof Library</h2>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+                <div class="form-group" style="margin: 0; flex: 1; max-width: 300px;">
+                    <input type="text" id="search-proof" placeholder="🔍 Search proof library..." onkeyup="filterProof()">
+                </div>
+                <div style="display: flex; gap: var(--space-sm);">
+                    <select id="filter-type" onchange="filterProof()" style="padding: var(--space-xs) var(--space-sm); background: var(--dark-bg); border: 1px solid var(--dark-border); border-radius: var(--radius-md); color: var(--text-primary);">
+                        <option value="all">All Types</option>
+                        <option value="revenue-win">Revenue Wins</option>
+                        <option value="time-saved">Time Saved</option>
+                        <option value="confidence-gain">Confidence Gains</option>
+                        <option value="transformation">Transformations</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="exportProofLibrary()">
+                        📥 Export Library
+                    </button>
+                </div>
+            </div>
+
+            <div id="proof-library" class="proof-library">
+                <!-- Proof cards will be inserted here -->
+                <div style="text-align: center; padding: var(--space-xl); color: var(--text-muted);">
+                    <p>No proof assets yet. Start by importing from email or adding manually above.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 BusinessBuild Agentic System | Credibility Agent</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/session-manager.js"></script>
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Initialize session on page load
+        let currentSession = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create session for this agent
+            currentSession = window.SessionAPI.createSession('credibility', {
+                timestamp: new Date().toISOString()
+            });
+            
+            console.log('Credibility Agent session started:', currentSession.sessionId);
+            
+            // Load existing proof library
+            loadProofLibrary();
+            
+            // Update stats
+            updateStats();
+        });
+
+        // Import from email
+        async function importFromEmail() {
+            const source = document.getElementById('email-source').value;
+            const query = document.getElementById('email-query').value;
+            const dateRange = document.getElementById('email-date-range').value;
+            
+            // Show processing
+            document.getElementById('processing').classList.add('active');
+            
+            // Add input to session
+            currentSession.addInput('email-import', source, {
+                query: query,
+                dateRange: dateRange
+            });
+            
+            // Simulate processing (in production, this would call actual email API)
+            setTimeout(() => {
+                // Add decision
+                currentSession.addDecision(1, 'scan-emails', `Scanning ${source} for testimonials and results`);
+                
+                // Generate demo proof (in production, this would be actual extraction)
+                const demoProof = generateDemoProof(source);
+                
+                // Add output
+                currentSession.addOutput('proof-assets', demoProof);
+                
+                // Add to library
+                demoProof.forEach(proof => addToLibrary(proof));
+                
+                // Hide processing
+                document.getElementById('processing').classList.remove('active');
+                
+                // Show notification
+                showNotification(`Found ${demoProof.length} proof assets from ${source}!`, 'success');
+                
+                // Update stats
+                updateStats();
+                
+                // Save session
+                window.SessionAPI.saveSession(currentSession.sessionId);
+            }, 2000);
+        }
+
+        // Add manual proof
+        function addManualProof() {
+            const client = document.getElementById('manual-client').value;
+            const result = document.getElementById('manual-result').value;
+            const quote = document.getElementById('manual-quote').value;
+            const context = document.getElementById('manual-context').value;
+            
+            if (!client || !result || !quote) {
+                showNotification('Please fill in required fields', 'warning');
+                return;
+            }
+            
+            // Get selected types
+            const types = [];
+            if (document.getElementById('type-revenue').checked) types.push('revenue-win');
+            if (document.getElementById('type-time').checked) types.push('time-saved');
+            if (document.getElementById('type-confidence').checked) types.push('confidence-gain');
+            if (document.getElementById('type-transformation').checked) types.push('transformation');
+            
+            const proof = {
+                id: 'proof-' + Date.now(),
+                type: types.length > 0 ? types[0] : 'general',
+                client: client,
+                result: result,
+                quote: quote,
+                context: context,
+                tags: types,
+                created: new Date().toISOString(),
+                sentiment: 'positive'
+            };
+            
+            // Add to session
+            currentSession.addInput('manual-entry', 'user', proof);
+            currentSession.addDecision(1, 'add-proof', 'Adding manual proof to library');
+            currentSession.addOutput('proof-asset', proof);
+            
+            // Add to library
+            addToLibrary(proof);
+            
+            // Clear form
+            document.getElementById('manual-client').value = '';
+            document.getElementById('manual-result').value = '';
+            document.getElementById('manual-quote').value = '';
+            document.getElementById('manual-context').value = '';
+            document.querySelectorAll('.checkbox-item input').forEach(cb => cb.checked = false);
+            
+            // Show notification
+            showNotification('Proof added to library!', 'success');
+            
+            // Update stats
+            updateStats();
+            
+            // Save session
+            window.SessionAPI.saveSession(currentSession.sessionId);
+        }
+
+        // Process form data
+        function processFormData() {
+            const source = document.getElementById('form-source').value;
+            const data = document.getElementById('form-data').value;
+            
+            if (!data) {
+                showNotification('Please paste form data', 'warning');
+                return;
+            }
+            
+            showNotification('Form processing feature coming soon!', 'info');
+        }
+
+        // Process file
+        function processFile() {
+            const fileInput = document.getElementById('file-upload');
+            if (!fileInput.files.length) {
+                showNotification('Please select a file', 'warning');
+                return;
+            }
+            
+            showNotification('File processing feature coming soon!', 'info');
+        }
+
+        // Generate demo proof
+        function generateDemoProof(source) {
+            return [
+                {
+                    id: 'proof-' + Date.now() + '-1',
+                    type: 'revenue-win',
+                    client: 'Sarah from SaaS Startup',
+                    result: 'Doubled MRR in 8 weeks',
+                    quote: 'This system completely transformed our onboarding process. We went from 15% to 40% activation rate.',
+                    tags: ['revenue-win', 'saas', 'onboarding'],
+                    created: new Date().toISOString(),
+                    sentiment: 'positive',
+                    source: source
+                },
+                {
+                    id: 'proof-' + Date.now() + '-2',
+                    type: 'transformation',
+                    client: 'Mike - Business Coach',
+                    result: 'Launched first course to 500 students',
+                    quote: 'I finally have a system that works. No more scattered notes and missed opportunities.',
+                    tags: ['transformation', 'course-creation', 'confidence'],
+                    created: new Date().toISOString(),
+                    sentiment: 'positive',
+                    source: source
+                }
+            ];
+        }
+
+        // Add to library
+        function addToLibrary(proof) {
+            // Get existing library from localStorage
+            let library = JSON.parse(localStorage.getItem('proof-library') || '[]');
+            
+            // Add new proof
+            library.push(proof);
+            
+            // Save back to localStorage
+            localStorage.setItem('proof-library', JSON.stringify(library));
+            
+            // Refresh display
+            loadProofLibrary();
+        }
+
+        // Load proof library
+        function loadProofLibrary() {
+            const library = JSON.parse(localStorage.getItem('proof-library') || '[]');
+            const container = document.getElementById('proof-library');
+            
+            if (library.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: var(--space-xl); color: var(--text-muted);">
+                        <p>No proof assets yet. Start by importing from email or adding manually above.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = library.map(proof => `
+                <div class="proof-card" data-type="${proof.type}" data-tags="${proof.tags.join(' ')}">
+                    <div class="proof-header">
+                        <span class="proof-type">${formatType(proof.type)}</span>
+                        <small style="color: var(--text-muted);">${formatDate(proof.created)}</small>
+                    </div>
+                    <h4 style="margin-bottom: var(--space-xs);">${proof.client}</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-sm); font-weight: 600;">
+                        ${proof.result}
+                    </p>
+                    <p style="color: var(--text-secondary); font-style: italic; margin-bottom: var(--space-sm);">
+                        "${proof.quote}"
+                    </p>
+                    ${proof.context ? `<p style="color: var(--text-muted); font-size: var(--font-size-sm);">${proof.context}</p>` : ''}
+                    <div class="proof-tags">
+                        ${proof.tags.map(tag => `<span class="proof-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter proof
+        function filterProof() {
+            const searchTerm = document.getElementById('search-proof').value.toLowerCase();
+            const filterType = document.getElementById('filter-type').value;
+            
+            const cards = document.querySelectorAll('.proof-card');
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const type = card.dataset.type;
+                
+                const matchesSearch = text.includes(searchTerm);
+                const matchesType = filterType === 'all' || type === filterType;
+                
+                card.style.display = (matchesSearch && matchesType) ? 'block' : 'none';
+            });
+        }
+
+        // Update stats
+        function updateStats() {
+            const library = JSON.parse(localStorage.getItem('proof-library') || '[]');
+            
+            document.getElementById('total-proof').textContent = library.length;
+            
+            // This month
+            const thisMonth = library.filter(p => {
+                const date = new Date(p.created);
+                const now = new Date();
+                return date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear();
+            }).length;
+            document.getElementById('this-month').textContent = thisMonth;
+            
+            // Revenue wins
+            const revenueWins = library.filter(p => p.tags.includes('revenue-win')).length;
+            document.getElementById('revenue-wins').textContent = revenueWins;
+            
+            // Sentiment
+            const positive = library.filter(p => p.sentiment === 'positive').length;
+            const percentage = library.length > 0 ? Math.round((positive / library.length) * 100) : 0;
+            document.getElementById('avg-sentiment').textContent = percentage + '%';
+        }
+
+        // Export library
+        function exportProofLibrary() {
+            const library = JSON.parse(localStorage.getItem('proof-library') || '[]');
+            
+            const csv = 'Client,Result,Quote,Type,Tags,Created\n' + 
+                library.map(p => `"${p.client}","${p.result}","${p.quote}","${p.type}","${p.tags.join(', ')}","${p.created}"`).join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'proof-library-' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+            
+            showNotification('Proof library exported!', 'success');
+        }
+
+        // Utility functions
+        function formatType(type) {
+            return type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            
+            Object.assign(notification.style, {
+                position: 'fixed',
+                top: '20px',
+                right: '20px',
+                padding: '1rem 1.5rem',
+                background: type === 'success' ? 'var(--success)' : 
+                           type === 'error' ? 'var(--danger)' : 
+                           type === 'warning' ? 'var(--warning)' :
+                           'var(--primary-blue)',
+                color: 'white',
+                borderRadius: 'var(--radius-md)',
+                boxShadow: 'var(--shadow-xl)',
+                zIndex: '9999',
+                animation: 'slideIn 0.3s ease-out'
+            });
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

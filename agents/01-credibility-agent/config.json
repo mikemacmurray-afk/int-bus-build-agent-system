@@ -1,0 +1,334 @@
+{
+  "agent_info": {
+    "name": "Credibility Agent",
+    "version": "1.0.0",
+    "agent_id": "credibility-001",
+    "pillar": "Authority",
+    "description": "Extract and organize proof of results from client interactions",
+    "status": "active",
+    "created": "2025-12-20",
+    "last_updated": "2025-12-20"
+  },
+  
+  "capabilities": {
+    "input_sources": [
+      "gmail",
+      "outlook",
+      "manual_entry",
+      "form_responses",
+      "file_upload",
+      "csv_import",
+      "json_import"
+    ],
+    "output_formats": [
+      "proof_asset",
+      "case_study",
+      "testimonial_collection",
+      "proof_library_export"
+    ],
+    "processing_modes": [
+      "batch",
+      "single",
+      "realtime"
+    ]
+  },
+  
+  "thresholds": {
+    "confidence_minimum": 0.3,
+    "quality_minimum": 5.0,
+    "pattern_detection_count": 5,
+    "case_study_minimum_proofs": 5,
+    "verification_required_threshold": 8.5,
+    "text_minimum_length": 50,
+    "quote_minimum_length": 20,
+    "quote_maximum_length": 500
+  },
+  
+  "scoring_weights": {
+    "specificity": {
+      "has_metrics": 4,
+      "has_timeline": 2,
+      "has_before_after": 2,
+      "has_specific_outcome": 2
+    },
+    "emotional_resonance": {
+      "transformation_language": 3,
+      "gratitude_excitement": 3,
+      "personal_story": 2,
+      "vulnerability": 2
+    },
+    "usability": {
+      "required_fields": 3,
+      "substantial_quote": 2,
+      "has_context": 2,
+      "verified": 2,
+      "clear_client": 1
+    },
+    "overall": {
+      "specificity_weight": 0.4,
+      "emotional_weight": 0.3,
+      "usability_weight": 0.3
+    }
+  },
+  
+  "classification": {
+    "proof_types": [
+      {
+        "id": "revenue-win",
+        "label": "Revenue Win",
+        "keywords": ["revenue", "mrr", "arr", "sales", "income", "profit", "pricing", "$"],
+        "color": "#10b981"
+      },
+      {
+        "id": "time-saved",
+        "label": "Time Saved",
+        "keywords": ["hours", "time", "faster", "efficiency", "automated", "streamlined"],
+        "color": "#3b82f6"
+      },
+      {
+        "id": "confidence-gain",
+        "label": "Confidence Gain",
+        "keywords": ["confident", "finally", "no longer afraid", "empowered", "feel equipped"],
+        "color": "#8b5cf6"
+      },
+      {
+        "id": "transformation",
+        "label": "Transformation",
+        "keywords": ["transformed", "life-changing", "complete turnaround", "night and day"],
+        "color": "#f59e0b"
+      },
+      {
+        "id": "launch",
+        "label": "Launch Success",
+        "keywords": ["launched", "shipped", "published", "first", "debut"],
+        "color": "#ec4899"
+      },
+      {
+        "id": "system-improvement",
+        "label": "System Improvement",
+        "keywords": ["process", "workflow", "system", "organized", "streamlined"],
+        "color": "#06b6d4"
+      },
+      {
+        "id": "general",
+        "label": "General",
+        "keywords": [],
+        "color": "#6b7280"
+      }
+    ],
+    
+    "industries": [
+      {
+        "id": "saas",
+        "label": "SaaS",
+        "keywords": ["saas", "software", "app", "platform", "dashboard"]
+      },
+      {
+        "id": "coaching",
+        "label": "Coaching",
+        "keywords": ["coaching", "coach", "client sessions", "accountability"]
+      },
+      {
+        "id": "consulting",
+        "label": "Consulting",
+        "keywords": ["consulting", "consultant", "advisory", "implementation"]
+      },
+      {
+        "id": "course-creation",
+        "label": "Course Creation",
+        "keywords": ["course", "students", "curriculum", "lesson", "enrollment"]
+      },
+      {
+        "id": "content-creation",
+        "label": "Content Creation",
+        "keywords": ["content", "creator", "audience", "subscribers", "followers"]
+      },
+      {
+        "id": "agency",
+        "label": "Agency",
+        "keywords": ["agency", "clients", "campaigns", "deliverables"]
+      },
+      {
+        "id": "freelance",
+        "label": "Freelance",
+        "keywords": ["freelance", "projects", "gigs", "clients"]
+      },
+      {
+        "id": "ecommerce",
+        "label": "E-commerce",
+        "keywords": ["ecommerce", "store", "products", "orders", "shopify"]
+      },
+      {
+        "id": "general",
+        "label": "General",
+        "keywords": []
+      }
+    ],
+    
+    "sentiments": [
+      {
+        "id": "exceptional",
+        "label": "Exceptional",
+        "threshold": "exceptional_indicators",
+        "color": "#22c55e"
+      },
+      {
+        "id": "positive",
+        "label": "Positive",
+        "threshold": "positive_indicators",
+        "color": "#3b82f6"
+      },
+      {
+        "id": "neutral",
+        "label": "Neutral",
+        "threshold": "default",
+        "color": "#6b7280"
+      }
+    ]
+  },
+  
+  "extraction_patterns": {
+    "metrics": {
+      "percentage": "\\d+%",
+      "currency": "\\$\\d+[,\\d]*",
+      "time_duration": "\\d+[,\\d]*\\s*(hours?|days?|weeks?|months?)",
+      "before_after": "from\\s+(\\$?\\d+[,\\d]*)\\s+to\\s+(\\$?\\d+[,\\d]*)",
+      "increase": "increased?\\s+by\\s+(\\d+)%?",
+      "growth": "grew\\s+(\\$?\\d+[,\\d]*)",
+      "savings": "saved?\\s+(\\d+)"
+    },
+    "timeline": {
+      "in_duration": "in\\s+(\\d+)\\s+(days?|weeks?|months?|years?)",
+      "within_duration": "within\\s+(\\d+)\\s+(days?|weeks?|months?)",
+      "after_duration": "after\\s+(\\d+)\\s+(days?|weeks?|months?)"
+    },
+    "emotions": {
+      "confidence": ["confident", "finally", "no longer afraid", "feel equipped", "empowered"],
+      "relief": ["weight off", "easier", "breathe", "stress-free", "peace of mind"],
+      "excitement": ["excited", "thrilled", "amazing", "incredible", "can't believe"],
+      "gratitude": ["thank you", "grateful", "appreciate", "changed everything", "life-changing"],
+      "transformation": ["transformed", "complete turnaround", "night and day", "totally different"]
+    }
+  },
+  
+  "email_integration": {
+    "gmail": {
+      "enabled": true,
+      "scopes": ["https://www.googleapis.com/auth/gmail.readonly"],
+      "default_query": "is:unread OR subject:(testimonial OR success OR win OR result)",
+      "max_results": 50,
+      "date_ranges": {
+        "7": "Last 7 days",
+        "30": "Last 30 days",
+        "90": "Last 90 days",
+        "all": "All time"
+      }
+    },
+    "outlook": {
+      "enabled": true,
+      "scopes": ["Mail.Read"],
+      "default_query": "hasAttachments:false AND (subject:testimonial OR subject:success OR subject:win)",
+      "max_results": 50,
+      "date_ranges": {
+        "7": "Last 7 days",
+        "30": "Last 30 days",
+        "90": "Last 90 days",
+        "all": "All time"
+      }
+    }
+  },
+  
+  "storage": {
+    "session_path": "../knowledge-base/sessions/",
+    "persistent_path": "../knowledge-base/persistent/proof-library/",
+    "format": "markdown",
+    "frontmatter_format": "yaml",
+    "auto_save": true,
+    "auto_save_interval": 60000,
+    "backup_enabled": true,
+    "backup_frequency": "daily"
+  },
+  
+  "export_formats": {
+    "csv": {
+      "enabled": true,
+      "columns": ["client", "result", "quote", "type", "tags", "created", "verified"]
+    },
+    "json": {
+      "enabled": true,
+      "pretty_print": true
+    },
+    "markdown": {
+      "enabled": true,
+      "include_frontmatter": true
+    }
+  },
+  
+  "notifications": {
+    "pattern_detected": {
+      "enabled": true,
+      "threshold": 5,
+      "message_template": "Pattern detected: {count} {type} proofs. Consider creating case study."
+    },
+    "high_quality_proof": {
+      "enabled": true,
+      "threshold": 8.5,
+      "message_template": "High-quality proof detected! Score: {score}/10. Consider verification."
+    },
+    "proof_library_milestone": {
+      "enabled": true,
+      "milestones": [10, 25, 50, 100, 250, 500],
+      "message_template": "🎉 Milestone reached: {count} proof assets in library!"
+    }
+  },
+  
+  "validation_rules": {
+    "required_fields": {
+      "manual_entry": ["client", "result", "quote"],
+      "email_extraction": ["from", "body", "date"],
+      "form_response": ["response_data"]
+    },
+    "minimum_lengths": {
+      "email_body": 50,
+      "quote": 20,
+      "result": 10,
+      "context": 0
+    },
+    "spam_detection": {
+      "enabled": true,
+      "keywords": ["click here", "buy now", "limited offer", "act fast", "unsubscribe"]
+    }
+  },
+  
+  "feature_flags": {
+    "enable_email_scanning": true,
+    "enable_manual_entry": true,
+    "enable_form_processing": true,
+    "enable_file_upload": true,
+    "enable_batch_processing": true,
+    "enable_pattern_detection": true,
+    "enable_case_study_generation": true,
+    "enable_auto_classification": true,
+    "enable_quality_scoring": true,
+    "enable_verification_prompts": true
+  },
+  
+  "ui_settings": {
+    "default_tab": "email",
+    "items_per_page": 20,
+    "show_quality_scores": true,
+    "show_timestamps": true,
+    "enable_search": true,
+    "enable_filters": true,
+    "color_code_by_type": true,
+    "auto_refresh_interval": 30000
+  },
+  
+  "performance": {
+    "batch_size": 10,
+    "max_concurrent_processes": 3,
+    "timeout_seconds": 30,
+    "retry_attempts": 3,
+    "cache_ttl_seconds": 300
+  }
+}

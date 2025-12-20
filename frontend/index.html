@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusinessBuild Agentic System - Dashboard</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>🚀 BusinessBuild Agentic System</h1>
+            <p class="tagline">Drive My Business Better</p>
+            <nav class="main-nav">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#agents" class="nav-link">Agents</a>
+                <a href="#workflows" class="nav-link">Workflows</a>
+                <a href="#data" class="nav-link">Knowledge Base</a>
+                <a href="#settings" class="nav-link">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <div class="container">
+            
+            <!-- Business Metrics Overview -->
+            <section class="metrics-overview">
+                <h2>📊 Business Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">📁</div>
+                        <div class="metric-value" id="proof-assets-count">0</div>
+                        <div class="metric-label">Proof Assets</div>
+                        <div class="metric-trend positive">+12 this week</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">📝</div>
+                        <div class="metric-value" id="content-pieces-count">0</div>
+                        <div class="metric-label">Content Pieces</div>
+                        <div class="metric-trend positive">+45 this week</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">💡</div>
+                        <div class="metric-value" id="narrative-bricks-count">0</div>
+                        <div class="metric-label">Narrative Bricks</div>
+                        <div class="metric-trend positive">+8 this week</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon">⚡</div>
+                        <div class="metric-value" id="workflows-run-count">0</div>
+                        <div class="metric-label">Workflows Run</div>
+                        <div class="metric-trend neutral">3 today</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Sessions -->
+            <section class="active-sessions">
+                <h2>🎯 Active Sessions</h2>
+                <div class="sessions-grid">
+                    <div class="session-card" data-agent="voice-codex">
+                        <span class="session-status active">●</span>
+                        <span class="session-name">Voice Codex</span>
+                        <span class="session-time">Running 23m</span>
+                    </div>
+                    <div class="session-card" data-agent="content-engine">
+                        <span class="session-status active">●</span>
+                        <span class="session-name">Content Engine</span>
+                        <span class="session-time">Running 5m</span>
+                    </div>
+                    <div class="session-card" data-agent="credibility">
+                        <span class="session-status idle">○</span>
+                        <span class="session-name">Credibility</span>
+                        <span class="session-time">Idle</span>
+                    </div>
+                    <div class="session-card" data-agent="narrative">
+                        <span class="session-status idle">○</span>
+                        <span class="session-name">Narrative Strategist</span>
+                        <span class="session-time">Idle</span>
+                    </div>
+                    <div class="session-card" data-agent="humanizer">
+                        <span class="session-status idle">○</span>
+                        <span class="session-name">Humanizer</span>
+                        <span class="session-time">Idle</span>
+                    </div>
+                    <div class="session-card" data-agent="speaking">
+                        <span class="session-status idle">○</span>
+                        <span class="session-name">Speaking Coach</span>
+                        <span class="session-time">Idle</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANCHOR Framework Pillars -->
+            <section class="anchor-pillars" id="agents">
+                
+                <!-- Pillar 1: Authority -->
+                <div class="pillar-section pillar-authority">
+                    <div class="pillar-header">
+                        <h3>🔵 PILLAR 1: AUTHORITY</h3>
+                        <span class="pillar-subtitle">Build Trust Through Evidence</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">📊</span>
+                                <h4>Credibility Agent</h4>
+                            </div>
+                            <span class="agent-status">47 proof assets</span>
+                        </div>
+                        <p class="agent-description">
+                            Extract and organize proof of results from client interactions, testimonials, and wins. Build your wall of proof automatically.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">Last update: 2h ago</span>
+                            <span class="stat-item">This month: +15 assets</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/credibility.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('proof')">View Library</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewAnalytics('credibility')">Analytics</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Narrative -->
+                <div class="pillar-section pillar-narrative">
+                    <div class="pillar-header">
+                        <h3>🟢 PILLAR 2: NARRATIVE</h3>
+                        <span class="pillar-subtitle">Craft Your Unique Perspective</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">💡</span>
+                                <h4>Voice Codex Agent</h4>
+                            </div>
+                            <span class="agent-status active-badge">Session Active</span>
+                        </div>
+                        <p class="agent-description">
+                            Capture raw thinking, organize insights, and build your personal narrative library. Your second brain for ideas.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">89 narrative bricks</span>
+                            <span class="stat-item">12 themes identified</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/voice-codex.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('narrative')">View Insights</a>
+                            <a href="#" class="btn btn-secondary" onclick="syncAgent('voice-codex')">Sync</a>
+                        </div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">📝</span>
+                                <h4>Narrative Strategist Agent</h4>
+                            </div>
+                            <span class="agent-status">12 brand updates</span>
+                        </div>
+                        <p class="agent-description">
+                            Evolve your brand messaging and positioning. Identify narrative gaps and suggest strategic upgrades.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">Last analysis: 1 day ago</span>
+                            <span class="stat-item">Positioning score: 8.5/10</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/narrative-strategist.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('brand-evolution')">View Evolution</a>
+                            <a href="#" class="btn btn-secondary" onclick="generateReport('narrative')">Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Consistent Distribution -->
+                <div class="pillar-section pillar-distribution">
+                    <div class="pillar-header">
+                        <h3>🟣 PILLAR 3: CONSISTENT DISTRIBUTION</h3>
+                        <span class="pillar-subtitle">Scale Without Burnout</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">🚀</span>
+                                <h4>Content Engine Agent</h4>
+                            </div>
+                            <span class="agent-status active-badge">Session Active</span>
+                        </div>
+                        <p class="agent-description">
+                            Transform one core idea into multi-platform content. Generate X posts, LinkedIn articles, Instagram captions, and more.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">156 content pieces</span>
+                            <span class="stat-item">5 platforms covered</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/content-engine.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('content')">Content Library</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewAnalytics('content')">Performance</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Human Presence -->
+                <div class="pillar-section pillar-human">
+                    <div class="pillar-header">
+                        <h3>🟠 PILLAR 4: HUMAN PRESENCE</h3>
+                        <span class="pillar-subtitle">AI Scales, You're The Soul</span>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">❤️</span>
+                                <h4>Humanizer Agent</h4>
+                            </div>
+                            <span class="agent-status">34 pieces humanized</span>
+                        </div>
+                        <p class="agent-description">
+                            Transform AI-polished content into authentic, relatable communication. Add warmth, vulnerability, and your unique voice.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">Avg authenticity: +45%</span>
+                            <span class="stat-item">Last use: 3h ago</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/humanizer.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('humanized')">View Outputs</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewAnalytics('humanizer')">Analytics</a>
+                        </div>
+                    </div>
+                    <div class="agent-card">
+                        <div class="agent-header">
+                            <div class="agent-title">
+                                <span class="agent-icon">🎤</span>
+                                <h4>Speaking Coach Agent</h4>
+                            </div>
+                            <span class="agent-status">8 sessions analyzed</span>
+                        </div>
+                        <p class="agent-description">
+                            Analyze delivery, pacing, and presence in audio/video content. Get coaching feedback to improve your communication impact.
+                        </p>
+                        <div class="agent-stats">
+                            <span class="stat-item">Improvement trend: +22%</span>
+                            <span class="stat-item">Last session: 2 days ago</span>
+                        </div>
+                        <div class="agent-actions">
+                            <a href="agents/speaking-coach.html" class="btn btn-primary">Open Agent</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewLibrary('speaking')">Session History</a>
+                            <a href="#" class="btn btn-secondary" onclick="viewAnalytics('speaking')">Progress</a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Recent Activity Feed -->
+            <section class="recent-activity">
+                <h2>⚡ Recent Workflow Activity</h2>
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <span class="activity-time">5 minutes ago</span>
+                        <span class="activity-icon">💡→🚀</span>
+                        <span class="activity-description">Voice Note → Content Engine → 5 posts generated (X, LinkedIn, Instagram)</span>
+                        <a href="#" class="activity-link">View outputs</a>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2 hours ago</span>
+                        <span class="activity-icon">📊→📝</span>
+                        <span class="activity-description">Credibility Update → Narrative refresh triggered → Brand positioning updated</span>
+                        <a href="#" class="activity-link">View changes</a>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">1 day ago</span>
+                        <span class="activity-icon">🚀→❤️</span>
+                        <span class="activity-description">Content Engine → Humanizer → 3 posts enhanced for authenticity</span>
+                        <a href="#" class="activity-link">Compare versions</a>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">2 days ago</span>
+                        <span class="activity-icon">🎤→🚀</span>
+                        <span class="activity-description">Speaking session analyzed → Key insights extracted → Content repurposed</span>
+                        <a href="#" class="activity-link">View analysis</a>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="loadMoreActivity()">Load More Activity</button>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>⚡ Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" onclick="newSession('voice-codex')">
+                        <span class="action-icon">💡</span>
+                        <span class="action-label">Capture Insight</span>
+                    </button>
+                    <button class="action-btn" onclick="newSession('content-engine')">
+                        <span class="action-icon">🚀</span>
+                        <span class="action-label">Generate Content</span>
+                    </button>
+                    <button class="action-btn" onclick="importData()">
+                        <span class="action-icon">📥</span>
+                        <span class="action-label">Import Data</span>
+                    </button>
+                    <button class="action-btn" onclick="runWorkflow()">
+                        <span class="action-icon">⚙️</span>
+                        <span class="action-label">Run Workflow</span>
+                    </button>
+                    <button class="action-btn" onclick="viewAllData()">
+                        <span class="action-icon">🗄️</span>
+                        <span class="action-label">Knowledge Base</span>
+                    </button>
+                    <button class="action-btn" onclick="exportReport()">
+                        <span class="action-icon">📊</span>
+                        <span class="action-label">Export Report</span>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 BusinessBuild Agentic System | Drive My Business Better</p>
+            <p class="footer-links">
+                <a href="https://github.com/mikemacmurray-afk/BusinessBuildAgenticSystem">GitHub</a> | 
+                <a href="../CONTEXT.md">Documentation</a> | 
+                <a href="#settings">Settings</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/session-manager.js"></script>
+    <script src="assets/js/data-loader.js"></script>
+</body>
+</html>
