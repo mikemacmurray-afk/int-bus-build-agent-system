@@ -1,0 +1,698 @@
+{
+  "agent_info": {
+    "name": "Speaking Coach Agent",
+    "version": "1.0",
+    "pillar": "Delivery",
+    "status": "active",
+    "description": "Optimize speaking engagements, presentations, and delivery for maximum audience impact"
+  },
+  
+  "presentation_structure": {
+    "power_opening": {
+      "duration": "3-5 minutes",
+      "components": [
+        "hook",
+        "problem",
+        "promise",
+        "credibility"
+      ],
+      "hook_types": [
+        "bold_statement",
+        "surprising_statistic",
+        "personal_story",
+        "provocative_question",
+        "visual_demonstration"
+      ]
+    },
+    "core_content": {
+      "framework": "3_point",
+      "point_1": {
+        "focus": "foundation",
+        "percentage": 30,
+        "elements": [
+          "core_concept",
+          "why_it_matters",
+          "common_mistakes",
+          "better_approach"
+        ]
+      },
+      "point_2": {
+        "focus": "implementation",
+        "percentage": 40,
+        "elements": [
+          "step_by_step_process",
+          "real_example",
+          "unique_method",
+          "practical_application"
+        ]
+      },
+      "point_3": {
+        "focus": "acceleration",
+        "percentage": 30,
+        "elements": [
+          "advanced_technique",
+          "proof_case_study",
+          "whats_possible",
+          "next_level_thinking"
+        ]
+      }
+    },
+    "powerful_close": {
+      "duration": "5-7 minutes",
+      "components": [
+        "recap",
+        "inspiration",
+        "call_to_action",
+        "memorable_ending"
+      ]
+    }
+  },
+  
+  "delivery_optimization": {
+    "vocal_technique": {
+      "pace_control": {
+        "fast": "excitement, lists, energy",
+        "medium": "teaching, explanation, normal",
+        "slow": "emphasis, key points, dramatic"
+      },
+      "pause_power": {
+        "before_important_points": "3 seconds",
+        "after_questions": "let_it_sink_in",
+        "during_transitions": "mental_reset",
+        "for_dramatic_effect": "build_tension"
+      },
+      "volume_variation": {
+        "loud": "passion, emphasis, energy",
+        "normal": "teaching, conversational",
+        "quiet": "intimacy, secrets, draw_in"
+      }
+    },
+    "body_language": {
+      "stage_positions": {
+        "center": "authority, key_points",
+        "stage_left": "storytelling, personal",
+        "stage_right": "teaching, frameworks",
+        "downstage": "intimacy, connection",
+        "upstage": "observation, reflection"
+      },
+      "movement_rules": {
+        "do": [
+          "move_with_purpose",
+          "plant_during_key_points",
+          "use_full_stage_strategically"
+        ],
+        "dont": [
+          "pace_nervously",
+          "hide_behind_podium",
+          "stay_in_one_spot"
+        ]
+      },
+      "gestures": {
+        "descriptive": "show_size_shape_direction",
+        "emphatic": "fist_point_palm_counting",
+        "avoid": [
+          "fig_leaf_position",
+          "hands_in_pockets_constantly",
+          "repetitive_gestures",
+          "fidgeting"
+        ]
+      },
+      "eye_contact": {
+        "duration_per_person": "3-5 seconds",
+        "coverage": "scan_all_sections",
+        "focus": "individuals_not_crowd",
+        "virtual": "look_at_camera"
+      }
+    },
+    "slides_and_visuals": {
+      "rule_of_one": {
+        "one_idea_per_slide": true,
+        "one_image_if_using": true,
+        "minimal_text": "7 words max",
+        "big_bold_fonts": true
+      },
+      "visual_hierarchy": {
+        "headline_size": "60pt+",
+        "subtext_size": "30pt+",
+        "use_contrast": true,
+        "white_space": "generous"
+      },
+      "when_to_use_slides": [
+        "complex_data_statistics",
+        "visual_frameworks",
+        "before_after_transformations",
+        "quote_emphasis",
+        "key_takeaways"
+      ],
+      "when_not_to_use_slides": [
+        "reading_bullet_points",
+        "wall_of_text",
+        "busy_charts",
+        "every_single_point"
+      ]
+    }
+  },
+  
+  "audience_engagement": {
+    "question_types": {
+      "rhetorical": {
+        "example": "What if you could double your revenue in 90 days?",
+        "action": "pause_dont_expect_answer"
+      },
+      "show_of_hands": {
+        "example": "Who here has struggled with pricing?",
+        "action": "wait_acknowledge"
+      },
+      "think_pair_share": {
+        "example": "Turn to person next to you. Tell them your biggest challenge.",
+        "action": "give_time_then_debrief"
+      },
+      "direct_questions": {
+        "example": "Sarah, what's your experience with this?",
+        "action": "engage_individual"
+      }
+    },
+    "interactive_elements": {
+      "exercises": [
+        "quick_worksheet",
+        "calculation_activity",
+        "self_assessment",
+        "planning_moment"
+      ],
+      "physical": [
+        "stand_if_applies",
+        "move_to_areas",
+        "partner_discussions",
+        "group_activities"
+      ],
+      "mental": [
+        "visualization",
+        "reflection_prompts",
+        "decision_scenarios",
+        "future_planning"
+      ]
+    },
+    "pattern_interrupts": {
+      "surprise": [
+        "unexpected_statistic",
+        "contrarian_view",
+        "personal_confession",
+        "bold_claim"
+      ],
+      "format_change": [
+        "video_clip_2min_max",
+        "live_demonstration",
+        "guest_appearance",
+        "qa_break"
+      ],
+      "energy_shift": [
+        "volume_change",
+        "movement",
+        "humor",
+        "music_sound"
+      ]
+    },
+    "energy_management": {
+      "audience_energy_curve": {
+        "0_10_min": "PEAK - capture_attention",
+        "10_20_min": "DIP - first_valley",
+        "20_30_min": "RECOVERY - re_engage",
+        "30_40_min": "DIP - second_valley",
+        "40_50_min": "FINAL_PUSH - close_strong"
+      },
+      "energy_boosters": [
+        "ask_questions",
+        "physical_movement",
+        "partner_discussions",
+        "surprising_statistics",
+        "humor",
+        "change_of_pace"
+      ]
+    }
+  },
+  
+  "qa_mastery": {
+    "structure": {
+      "before_qa": "share_3_key_takeaways",
+      "during_qa": "answer_questions",
+      "after_qa": "powerful_closing_statement",
+      "never_end_on_qa": true
+    },
+    "handling_techniques": {
+      "bridge_method": {
+        "acknowledge": "Great question about [topic]",
+        "bridge": "Let me share what I've seen...",
+        "answer": "[Specific answer with example]",
+        "confirm": "Does that answer your question?"
+      },
+      "reframe": {
+        "question_type": "comparison_to_competitor",
+        "response": "What makes our approach different is..."
+      },
+      "deflect_politely": {
+        "question_type": "very_specific_off_topic",
+        "response": "Great question, but specific to your situation. Let's connect after..."
+      }
+    },
+    "difficult_questions": {
+      "the_challenge": {
+        "format": "I tried this before and it didn't work",
+        "response_framework": [
+          "acknowledge_experience",
+          "explain_difference",
+          "provide_proof_example"
+        ]
+      },
+      "the_objection": {
+        "format": "This seems too expensive/time-consuming/difficult",
+        "response_framework": [
+          "acknowledge_concern",
+          "reframe_value",
+          "proof_of_overcoming"
+        ]
+      },
+      "the_skeptic": {
+        "format": "How do I know this actually works?",
+        "response_framework": [
+          "validate_healthy_skepticism",
+          "specific_case_study",
+          "social_proof",
+          "turn_question_back"
+        ]
+      }
+    }
+  },
+  
+  "preparation_system": {
+    "timeline": {
+      "90_days_out": [
+        "confirm_topic_and_audience",
+        "research_demographics",
+        "review_past_feedback",
+        "draft_initial_outline",
+        "identify_proof_stories"
+      ],
+      "30_days_out": [
+        "finalize_content_structure",
+        "create_slide_deck",
+        "write_script_talking_points",
+        "practice_once_through",
+        "get_colleague_feedback"
+      ],
+      "7_days_out": [
+        "full_run_through_timed",
+        "refine_transitions",
+        "polish_opening_and_close",
+        "prepare_qa_responses",
+        "test_all_tech"
+      ],
+      "day_before": [
+        "light_run_through",
+        "visualize_success",
+        "prepare_materials",
+        "rest_well",
+        "hydrate"
+      ],
+      "day_of": [
+        "arrive_early",
+        "test_equipment",
+        "walk_the_stage",
+        "meet_organizers",
+        "warm_up_voice"
+      ]
+    },
+    "practice_methods": {
+      "full_run": "complete_presentation_timed_recorded",
+      "chunk_method": "practice_one_section_at_time",
+      "conversation_test": "explain_to_friend_no_slides_notes",
+      "visualization": "mental_rehearsal_see_success"
+    }
+  },
+  
+  "venue_adaptation": {
+    "keynote": {
+      "audience_size": "500+",
+      "structure": [
+        "big_opening_surprising",
+        "3_clear_points",
+        "massive_stage_presence",
+        "powerful_visuals",
+        "memorable_close"
+      ],
+      "delivery": [
+        "project_voice",
+        "large_gestures",
+        "slow_down",
+        "repeat_key_points",
+        "maximum_energy"
+      ]
+    },
+    "workshop": {
+      "audience_size": "20-50",
+      "structure": [
+        "interactive_opening",
+        "teach_practice_debrief",
+        "hands_on_exercises",
+        "group_discussions",
+        "action_planning"
+      ],
+      "delivery": [
+        "conversational",
+        "move_among_audience",
+        "lots_of_questions",
+        "personal_attention",
+        "facilitator_mode"
+      ]
+    },
+    "webinar": {
+      "audience_size": "virtual",
+      "structure": [
+        "strong_visual_hook",
+        "poll_chat_engagement",
+        "screen_sharing",
+        "clear_ctas",
+        "qa_throughout"
+      ],
+      "delivery": [
+        "look_at_camera",
+        "vocal_energy_up_20_percent",
+        "pause_for_chat",
+        "use_visuals_heavily",
+        "shorter_segments_8_10_min"
+      ]
+    },
+    "podcast_interview": {
+      "format": "audio_only",
+      "structure": [
+        "compelling_stories_ready",
+        "3_key_messages",
+        "quotable_moments",
+        "clear_ctas",
+        "follow_up_resources"
+      ],
+      "delivery": [
+        "conversational",
+        "concise_answers",
+        "paint_word_pictures",
+        "energy_in_voice_only",
+        "reference_host_questions"
+      ]
+    }
+  },
+  
+  "audience_adaptation": {
+    "beginner": {
+      "approach": [
+        "avoid_jargon",
+        "more_examples",
+        "slower_pace",
+        "repeat_key_concepts",
+        "encourage_questions"
+      ]
+    },
+    "advanced": {
+      "approach": [
+        "skip_basics",
+        "nuanced_insights",
+        "faster_pace",
+        "challenge_thinking",
+        "peer_discussions"
+      ]
+    },
+    "mixed": {
+      "approach": [
+        "layer_content",
+        "for_those_new_to_this",
+        "for_advanced_folks",
+        "offer_deeper_resources",
+        "satisfy_all_levels"
+      ]
+    }
+  },
+  
+  "memorable_moments": {
+    "signature_stories": {
+      "origin_story": {
+        "purpose": "build_connection_show_credibility",
+        "elements": [
+          "where_you_started",
+          "the_struggle",
+          "the_breakthrough",
+          "the_transformation"
+        ]
+      },
+      "transformation_story": {
+        "purpose": "provide_proof_build_belief",
+        "elements": [
+          "client_starting_point",
+          "problem_impact",
+          "intervention",
+          "specific_results",
+          "current_state"
+        ]
+      },
+      "failure_story": {
+        "purpose": "build_trust_teach_through_mistakes",
+        "elements": [
+          "what_you_tried",
+          "why_thought_it_would_work",
+          "how_it_failed",
+          "what_you_learned",
+          "better_approach_now"
+        ]
+      }
+    },
+    "quotable_moments": {
+      "characteristics": [
+        "contrarian_to_conventional_wisdom",
+        "memorable_phrasing",
+        "tweet_length_280_chars",
+        "repeatable",
+        "shareable"
+      ],
+      "examples": [
+        "Your network isn't your net worth. Your transformation stories are.",
+        "Don't scale your business. Scale your impact.",
+        "The riches aren't in the niches. The riches are in the transformations."
+      ]
+    },
+    "visual_demonstrations": {
+      "live_examples": [
+        "before_after_side_by_side",
+        "real_time_calculation",
+        "framework_application",
+        "role_play_scenario",
+        "whiteboard_session"
+      ],
+      "physical_props": [
+        "product_demonstration",
+        "metaphorical_objects",
+        "visual_comparisons",
+        "surprise_reveals",
+        "interactive_tools"
+      ]
+    }
+  },
+  
+  "conversion_strategy": {
+    "soft_cta": {
+      "approach": "content_first",
+      "example": "If you'd like the framework, I've created a free guide at [website]/[resource]. No email required."
+    },
+    "medium_cta": {
+      "approach": "value_exchange",
+      "example": "I've created a complete implementation system. Text SYSTEM to [number] or visit [website]."
+    },
+    "hard_cta": {
+      "approach": "selling_from_stage",
+      "example": "For those who want support, we're opening 10 spots for our 90-day intensive. Investment is [$X]."
+    },
+    "ethical_guidelines": {
+      "do": [
+        "provide_massive_value_first",
+        "make_offer_relevant_to_content",
+        "be_transparent_about_pricing",
+        "give_multiple_next_steps",
+        "respect_those_who_dont_buy"
+      ],
+      "dont": [
+        "bait_and_switch",
+        "hard_pressure_tactics",
+        "fake_scarcity",
+        "manipulate_emotions",
+        "pitch_irrelevant_offers"
+      ]
+    }
+  },
+  
+  "presentation_templates": {
+    "transformation_talk": {
+      "duration": "45-60 minutes",
+      "structure": {
+        "00_05": "opening",
+        "05_15": "point_1_hidden_mistake",
+        "15_30": "point_2_framework",
+        "30_40": "point_3_acceleration",
+        "40_45": "close",
+        "45_60": "qa"
+      }
+    },
+    "teaching_workshop": {
+      "duration": "90-120 minutes",
+      "structure": {
+        "00_10": "engage",
+        "10_30": "teach_1",
+        "30_50": "teach_2",
+        "50_60": "break",
+        "60_80": "teach_3",
+        "80_90": "implement",
+        "90_120": "qa_and_close"
+      }
+    },
+    "keynote": {
+      "duration": "20-30 minutes",
+      "structure": {
+        "00_03": "hook_hard",
+        "03_08": "big_idea",
+        "08_15": "proof",
+        "15_25": "application",
+        "25_30": "close"
+      }
+    }
+  },
+  
+  "common_challenges": {
+    "nervousness": {
+      "symptoms": [
+        "shaky_voice",
+        "rapid_speech",
+        "fidgeting",
+        "forgetting_points"
+      ],
+      "solutions": [
+        "deep_breathing_4_7_8",
+        "power_posing_beforehand",
+        "focus_on_serving_audience",
+        "practice_more",
+        "start_with_smaller_groups"
+      ]
+    },
+    "losing_audience": {
+      "symptoms": [
+        "phone_checking",
+        "side_conversations",
+        "glazed_looks",
+        "low_energy"
+      ],
+      "solutions": [
+        "ask_engaging_question",
+        "share_surprising_fact",
+        "interactive_exercise",
+        "change_pace_volume",
+        "tell_compelling_story"
+      ]
+    },
+    "running_over_time": {
+      "symptoms": [
+        "rushed_ending",
+        "skipped_content",
+        "cut_off_qa"
+      ],
+      "solutions": [
+        "practice_with_timer",
+        "note_must_include_vs_nice_to_have",
+        "build_in_time_buffers",
+        "watch_clock_discreetly",
+        "cut_stories_not_frameworks"
+      ]
+    },
+    "tech_failures": {
+      "symptoms": [
+        "slides_wont_load",
+        "mic_issues",
+        "video_wont_play"
+      ],
+      "solutions": [
+        "backup_usb_cloud_pdf",
+        "practice_without_slides",
+        "test_all_tech_twice",
+        "know_manual_workarounds",
+        "stay_calm_make_joke"
+      ]
+    }
+  },
+  
+  "success_metrics": [
+    "engagement_audience_participating",
+    "feedback_8_plus_out_of_10",
+    "conversions_20_percent_plus_next_step",
+    "retention_remembered_30_days_later",
+    "referrals_booked_from_this_event",
+    "authority_positioned_as_expert",
+    "impact_audience_implements",
+    "confidence_energized_not_drained"
+  ],
+  
+  "integration": {
+    "from_narrative_strategist": {
+      "receives": [
+        "positioning_frameworks",
+        "messaging_strategy",
+        "brand_voice_guidelines",
+        "signature_phrases"
+      ],
+      "applies": [
+        "use_positioning_in_intro",
+        "apply_messaging_frameworks",
+        "maintain_brand_voice",
+        "incorporate_signature_phrases"
+      ]
+    },
+    "from_voice_codex": {
+      "receives": [
+        "narrative_bricks",
+        "theme_clusters",
+        "proven_insights"
+      ],
+      "applies": [
+        "convert_bricks_to_stories",
+        "use_metaphors_for_concepts",
+        "build_on_themes",
+        "reference_insights"
+      ]
+    },
+    "from_credibility_agent": {
+      "receives": [
+        "proof_assets",
+        "transformation_stories",
+        "results_metrics"
+      ],
+      "applies": [
+        "feature_proof_throughout",
+        "use_client_examples",
+        "cite_concrete_results",
+        "build_credibility"
+      ]
+    }
+  },
+  
+  "storage_paths": {
+    "sessions": "knowledge-base/sessions/speaking-coach/",
+    "persistent": {
+      "presentations": "knowledge-base/persistent/speaking-coach/presentations/",
+      "preparation": "knowledge-base/persistent/speaking-coach/preparation/",
+      "resources": "knowledge-base/persistent/speaking-coach/resources/"
+    }
+  },
+  
+  "features": {
+    "presentation_structuring": true,
+    "delivery_coaching": true,
+    "audience_engagement": true,
+    "qa_preparation": true,
+    "venue_adaptation": true,
+    "memorable_moments": true,
+    "conversion_strategy": true,
+    "practice_system": true
+  }
+}
