@@ -2,25 +2,23 @@
 
 **TO GET THIS AGENT:**
 
-Download **BusinessBuildAgenticSystem-v1.1.zip** from your session and copy these files here:
+Download **BusinessBuildAgenticSystem-v1.1.zip** from your session.
+
+**Copy These Files:**
 
 ```
-From v1.1-extracted/agents/01-credibility-agent/:
-- agent-prompt.md
-- config.json
-- README.md
+From v1.1/agents/01-credibility-agent/:
+- agent-prompt.md → copy here
+- config.json → copy here
+- README.md → copy here
 
-From v1.1-extracted/frontend/agents/:
+From v1.1/frontend/agents/:
 - credibility.html → copy to ../../frontend/agents/
 ```
 
-**Agent Purpose:** Extract and organize proof from client interactions
+**IMPORTANT:** The HTML file must be named `credibility.html`
 
-**Files You'll Get:**
-- agent-prompt.md (~1,200 lines) - Complete AI instructions
-- config.json (~375 lines) - All settings
-- README.md (~520 lines) - Usage guide
-- credibility.html (~1,160 lines) - Interface
+**Agent Purpose:** Extract and organize proof from client interactions
 
 **Version:** 1.0  
 **Release:** v1.1  
