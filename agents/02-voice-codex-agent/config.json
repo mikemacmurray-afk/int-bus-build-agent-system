@@ -1,0 +1,122 @@
+{
+  "agent_info": {
+    "name": "Voice Codex Agent",
+    "version": "1.0.0",
+    "agent_id": "voice-codex-001",
+    "pillar": "Narrative",
+    "description": "Capture raw thinking and organize into narrative building blocks",
+    "status": "active",
+    "created": "2025-12-20"
+  },
+  
+  "brick_types": [
+    {
+      "id": "insight",
+      "label": "💡 Insight",
+      "description": "Realization or discovery",
+      "indicators": ["realized", "noticed", "breakthrough", "understood", "clicked"],
+      "color": "#3b82f6"
+    },
+    {
+      "id": "metaphor",
+      "label": "🎨 Metaphor",
+      "description": "Comparison that illuminates",
+      "indicators": ["like", "as", "imagine", "think of it as"],
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "distinction",
+      "label": "⚡ Distinction",
+      "description": "Differentiation that creates clarity",
+      "indicators": ["vs", "not X but Y", "difference between", "≠"],
+      "color": "#f59e0b"
+    },
+    {
+      "id": "refrain",
+      "label": "🔁 Refrain",
+      "description": "Repeated phrase or belief",
+      "indicators": ["always say", "my belief", "core principle"],
+      "color": "#10b981"
+    },
+    {
+      "id": "framework",
+      "label": "📐 Framework",
+      "description": "Structured thinking model",
+      "indicators": ["framework", "model", "three parts", "step"],
+      "color": "#ec4899"
+    },
+    {
+      "id": "question",
+      "label": "❓ Question",
+      "description": "Powerful reframing question",
+      "indicators": ["what if", "how might", "why"],
+      "color": "#06b6d4"
+    }
+  ],
+  
+  "themes": [
+    "systems-thinking",
+    "brand-philosophy",
+    "creative-process",
+    "productivity-beliefs",
+    "client-psychology",
+    "personal-evolution",
+    "contrarian-takes",
+    "industry-critique",
+    "future-vision",
+    "leadership-style"
+  ],
+  
+  "quality_scoring": {
+    "novelty_weight": 0.25,
+    "utility_weight": 0.25,
+    "clarity_weight": 0.25,
+    "memorability_weight": 0.25,
+    "minimum_overall": 5.0,
+    "exceptional_threshold": 8.5
+  },
+  
+  "thresholds": {
+    "theme_detection_minimum": 5,
+    "refrain_repetition_minimum": 3,
+    "connection_strength_minimum": 0.6,
+    "content_minimum_length": 20,
+    "content_maximum_length": 500
+  },
+  
+  "input_sources": {
+    "voice_note": {
+      "enabled": true,
+      "transcription_service": "browser-api",
+      "auto_process": true
+    },
+    "text_input": {
+      "enabled": true,
+      "preserve_formatting": false
+    },
+    "book_notes": {
+      "enabled": true,
+      "require_context": true
+    },
+    "conversation": {
+      "enabled": true,
+      "require_context": true
+    }
+  },
+  
+  "storage": {
+    "session_path": "../knowledge-base/sessions/",
+    "persistent_path": "../knowledge-base/persistent/narrative-bricks/",
+    "format": "markdown",
+    "auto_save": true
+  },
+  
+  "features": {
+    "pattern_detection": true,
+    "theme_clustering": true,
+    "brick_suggestions": true,
+    "quality_alerts": true,
+    "gap_analysis": true,
+    "connection_mapping": true
+  }
+}

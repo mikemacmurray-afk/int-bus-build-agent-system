@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Engine Agent | BusinessBuildAgenticSystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header with Neon Accent */
+        .agent-header {
+            background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(131, 56, 236, 0.3);
+        }
+
+        .agent-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .agent-header h1 {
+            font-size: 4em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            letter-spacing: -2px;
+        }
+
+        .agent-header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+        }
+
+        /* Stats Dashboard - Cyberpunk Style */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 30px 25px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00f5ff, #ff006e);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: #00f5ff;
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00f5ff;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 3em;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, #00f5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-meta {
+            font-size: 0.85em;
+            color: #999;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Tabs - Brutalist Style */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 18px 32px;
+            background: transparent;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-family: 'Syne', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+
+        .tab-button:hover::before {
+            height: 100%;
+        }
+
+        .tab-button:hover {
+            color: #fff;
+            border-color: #ff006e;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            border-color: #ff006e;
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Section - Glass Morphism */
+        .content-section {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff, #00f5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Input Form - Futuristic */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #00f5ff;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00f5ff;
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .form-hint {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Buttons - Neon Style */
+        .action-button {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #ff006e, #8338ec);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .action-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(255, 0, 110, 0.5);
+        }
+
+        .action-button.secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            box-shadow: none;
+        }
+
+        .action-button.secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #00f5ff;
+        }
+
+        /* Platform Selector - Grid Cards */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .platform-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .platform-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 14px;
+        }
+
+        .platform-card:hover::after {
+            opacity: 1;
+        }
+
+        .platform-card.selected {
+            border-color: #00f5ff;
+            background: rgba(0, 245, 255, 0.05);
+            box-shadow: 0 8px 30px rgba(0, 245, 255, 0.2);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .platform-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+        }
+
+        .platform-name {
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 6px;
+        }
+
+        .platform-format {
+            font-size: 0.8em;
+            color: #999;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Output Preview - Terminal Style */
+        .output-preview {
+            background: #000;
+            border: 2px solid #00f5ff;
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .output-header {
+            background: #00f5ff;
+            color: #000;
+            padding: 12px 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .output-content {
+            padding: 25px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+            color: #00f5ff;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .output-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .output-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .output-content::-webkit-scrollbar-thumb {
+            background: #00f5ff;
+            border-radius: 4px;
+        }
+
+        /* Workflow Cards */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .workflow-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.05), rgba(131, 56, 236, 0.05));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workflow-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff006e, #8338ec);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s ease;
+        }
+
+        .workflow-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .workflow-card:hover {
+            transform: translateX(8px);
+            border-color: #ff006e;
+        }
+
+        .workflow-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .workflow-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        .workflow-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Content History List */
+        .content-history {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid #00f5ff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .history-item:hover {
+            background: rgba(0, 245, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .history-title {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .history-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8em;
+            color: #999;
+        }
+
+        .history-platforms {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .platform-tag {
+            padding: 4px 12px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-family: 'IBM Plex Mono', monospace;
+            color: #00f5ff;
+        }
+
+        /* Processing Animation */
+        .processing-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .processing-overlay.active {
+            display: flex;
+        }
+
+        .processing-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(0, 245, 255, 0.1);
+            border-top-color: #00f5ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .processing-text {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #00f5ff;
+            margin-bottom: 10px;
+        }
+
+        .processing-subtext {
+            color: #999;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .agent-header h1 {
+                font-size: 2.5em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="agent-header">
+            <h1>🚀 CONTENT ENGINE</h1>
+            <p class="subtitle">Transform 1 idea into 10+ platform-optimized pieces</p>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">This Month</div>
+                <div class="stat-value">127</div>
+                <div class="stat-meta">pieces published</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg Quality</div>
+                <div class="stat-value">8.2</div>
+                <div class="stat-meta">engagement score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Top Platform</div>
+                <div class="stat-value">X</div>
+                <div class="stat-meta">6.8% engagement</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Efficiency</div>
+                <div class="stat-value">22m</div>
+                <div class="stat-meta">avg per workflow</div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="create">Create Content</button>
+            <button class="tab-button" data-tab="workflows">Workflows</button>
+            <button class="tab-button" data-tab="preview">Preview</button>
+            <button class="tab-button" data-tab="history">History</button>
+            <button class="tab-button" data-tab="analytics">Analytics</button>
+        </div>
+
+        <!-- Tab: Create Content -->
+        <div id="create" class="tab-content active">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Input Source</h2>
+                </div>
+
+                <div class="form-group">
+                    <label>Content Type</label>
+                    <select id="contentType">
+                        <option value="voice-note">Voice Note / Transcript</option>
+                        <option value="narrative-brick">Narrative Brick (Insight)</option>
+                        <option value="proof-asset">Proof Asset (Testimonial)</option>
+                        <option value="long-form">Long-Form Article</option>
+                        <option value="framework">Framework / System</option>
+                    </select>
+                    <span class="form-hint">Select the type of content you're repurposing</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Input Content</label>
+                    <textarea id="inputContent" placeholder="Paste your voice note transcript, insight, or article here..."></textarea>
+                    <span class="form-hint">This is the core idea that will be multiplied across platforms</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Link to Proof (Optional)</label>
+                    <input type="text" id="proofLink" placeholder="testimonial-047, case-study-012">
+                    <span class="form-hint">Connect to credibility assets to support claims</span>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Select Platforms</h2>
+                </div>
+
+                <div class="platform-grid">
+                    <div class="platform-card selected" data-platform="twitter">
+                        <div class="platform-icon">𝕏</div>
+                        <div class="platform-name">X / Twitter</div>
+                        <div class="platform-format">Thread (6-8 tweets)</div>
+                    </div>
+                    <div class="platform-card" data-platform="linkedin">
+                        <div class="platform-icon">in</div>
+                        <div class="platform-name">LinkedIn</div>
+                        <div class="platform-format">Long-form post</div>
+                    </div>
+                    <div class="platform-card" data-platform="instagram">
+                        <div class="platform-icon">📷</div>
+                        <div class="platform-name">Instagram</div>
+                        <div class="platform-format">Carousel (7 slides)</div>
+                    </div>
+                    <div class="platform-card" data-platform="email">
+                        <div class="platform-icon">✉</div>
+                        <div class="platform-name">Email</div>
+                        <div class="platform-format">Newsletter section</div>
+                    </div>
+                    <div class="platform-card" data-platform="blog">
+                        <div class="platform-icon">📝</div>
+                        <div class="platform-name">Blog</div>
+                        <div class="platform-format">SEO article</div>
+                    </div>
+                    <div class="platform-card" data-platform="youtube">
+                        <div class="platform-icon">▶</div>
+                        <div class="platform-name">YouTube</div>
+                        <div class="platform-format">Short script (60s)</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="action-button" onclick="generateContent()">
+                        Generate Content
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Workflows -->
+        <div id="workflows" class="tab-content">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Repurposing Workflows</h2>
+                </div>
+
+                <div class="workflow-grid">
+                    <div class="workflow-card">
+                        <div class="workflow-title">Voice Note → Multi-Platform</div>
+                        <div class="workflow-meta">
+                            <span>⏱ 30 min</span>
+                            <span>📊 5-7 pieces</span>
+                        </div>
+                        <div class="workflow-description">
+                            Transform a 3-minute voice note into X thread, LinkedIn post, Instagram carousel, email section, and quote graphics.
+                        </div>
+                        <button class="action-button secondary">Start Workflow</button>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-title">Long-Form → Atomized</div>
+                        <div class="workflow-meta">
+                            <span>⏱ 45 min</span>
+                            <span>📊 20-30 pieces</span>
+                        </div>
+                        <div class="workflow-description">
+                            Break down a 2,000-word article into threads, posts, carousels, email series, and social graphics.
+                        </div>
+                        <button class="action-button secondary">Start Workflow</button>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-title">Proof → Amplification</div>
+                        <div class="workflow-meta">
+                            <span>⏱ 25 min</span>
+                            <span>📊 8-10 pieces</span>
+                        </div>
+                        <div class="workflow-description">
+                            Turn a client testimonial into proof narrative thread, case study, before/after carousel, and success story email.
+                        </div>
+                        <button class="action-button secondary">Start Workflow</button>
+                    </div>
+
+                    <div class="workflow-card">
+                        <div class="workflow-title">Framework → Educational Series</div>
+                        <div class="workflow-meta">
+                            <span>⏱ 60 min</span>
+                            <span>📊 10+ pieces</span>
+                        </div>
+                        <div class="workflow-description">
+                            Create overview thread, deep-dive post, visual carousel, email series, blog guide, and downloadable PDF from your framework.
+                        </div>
+                        <button class="action-button secondary">Start Workflow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Preview -->
+        <div id="preview" class="tab-content">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Content Preview</h2>
+                </div>
+
+                <div class="output-preview">
+                    <div class="output-header">
+                        <span>X/TWITTER THREAD</span>
+                        <span>Engagement Score: 8.4</span>
+                    </div>
+                    <div class="output-content" id="previewContent">
+                        <div style="margin-bottom: 20px;">
+                            <div style="color: #ff006e;">Tweet 1/8 [HOOK]</div>
+                            Most coaches fail because they try to serve everyone.<br><br>
+                            Here's why "everyone" is the wrong answer (and what to do instead):
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <div style="color: #ff006e;">Tweet 2/8 [CONTEXT]</div>
+                            The riches are in the niches.<br><br>
+                            But most coaches stop there.<br><br>
+                            They pick a demographic and think they're done.
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <div style="color: #ff006e;">Tweet 3/8 [INSIGHT]</div>
+                            The real specificity isn't in WHO you serve.<br><br>
+                            It's in the STRUGGLE you solve.<br><br>
+                            Not "business owners"<br>
+                            But "SaaS founders whose customers are churning"
+                        </div>
+
+                        <div style="color: #999;">[Preview truncated - Full thread available after generation]</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="action-button">Send to Humanizer</button>
+                    <button class="action-button secondary">Export All Formats</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: History -->
+        <div id="history" class="tab-content">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Content History</h2>
+                    <button class="action-button secondary">Filter</button>
+                </div>
+
+                <div class="content-history">
+                    <div class="history-item">
+                        <div class="history-header">
+                            <div class="history-title">Niche Clarity Framework</div>
+                            <div class="history-date">2025-12-20</div>
+                        </div>
+                        <div class="history-platforms">
+                            <span class="platform-tag">X/Twitter</span>
+                            <span class="platform-tag">LinkedIn</span>
+                            <span class="platform-tag">Instagram</span>
+                            <span class="platform-tag">Email</span>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-header">
+                            <div class="history-title">Sarah's Transformation Story</div>
+                            <div class="history-date">2025-12-19</div>
+                        </div>
+                        <div class="history-platforms">
+                            <span class="platform-tag">X/Twitter</span>
+                            <span class="platform-tag">LinkedIn</span>
+                            <span class="platform-tag">Instagram</span>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-header">
+                            <div class="history-title">Speed-to-Results Positioning</div>
+                            <div class="history-date">2025-12-18</div>
+                        </div>
+                        <div class="history-platforms">
+                            <span class="platform-tag">X/Twitter</span>
+                            <span class="platform-tag">LinkedIn</span>
+                            <span class="platform-tag">Blog</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Analytics -->
+        <div id="analytics" class="tab-content">
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">Performance Analytics</h2>
+                </div>
+
+                <div class="stats-grid" style="margin-bottom: 30px;">
+                    <div class="stat-card">
+                        <div class="stat-label">X/Twitter</div>
+                        <div class="stat-value">6.8%</div>
+                        <div class="stat-meta">engagement rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">LinkedIn</div>
+                        <div class="stat-value">3.2%</div>
+                        <div class="stat-meta">comment rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Instagram</div>
+                        <div class="stat-value">4.1%</div>
+                        <div class="stat-meta">save rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Email</div>
+                        <div class="stat-value">7.3%</div>
+                        <div class="stat-meta">click rate</div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="action-button secondary">Download Full Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Overlay -->
+        <div class="processing-overlay" id="processingOverlay">
+            <div class="processing-content">
+                <div class="spinner"></div>
+                <div class="processing-text">GENERATING CONTENT</div>
+                <div class="processing-subtext">Multiplying across platforms...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/session-manager.js"></script>
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+                
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Platform Selection
+        document.querySelectorAll('.platform-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('selected');
+            });
+        });
+
+        // Generate Content
+        function generateContent() {
+            const inputContent = document.getElementById('inputContent').value;
+            if (!inputContent.trim()) {
+                alert('Please enter some content to repurpose!');
+                return;
+            }
+
+            const selectedPlatforms = Array.from(document.querySelectorAll('.platform-card.selected'))
+                .map(card => card.dataset.platform);
+
+            if (selectedPlatforms.length === 0) {
+                alert('Please select at least one platform!');
+                return;
+            }
+
+            const overlay = document.getElementById('processingOverlay');
+            overlay.classList.add('active');
+
+            // Simulate generation
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                
+                // Switch to preview tab
+                document.querySelector('[data-tab="preview"]').click();
+                
+                alert(`Content generated for ${selectedPlatforms.length} platforms!\n\nGenerated:\n${selectedPlatforms.map(p => `- ${p}`).join('\n')}`);
+            }, 2500);
+
+            // Save session data
+            sessionManager.saveData({
+                inputContent,
+                contentType: document.getElementById('contentType').value,
+                selectedPlatforms,
+                timestamp: new Date().toISOString()
+            });
+        }
+
+        // Initialize session manager
+        const sessionManager = new SessionManager('content-engine');
+        sessionManager.startSession();
+
+        // Auto-save on input
+        document.getElementById('inputContent').addEventListener('input', (e) => {
+            sessionManager.saveData({
+                inputContent: e.target.value,
+                lastUpdate: new Date().toISOString()
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+{
+  "agent_info": {
+    "name": "Humanizer Agent",
+    "version": "1.0",
+    "pillar": "Authenticity",
+    "status": "active",
+    "description": "Add final human touches to AI-generated content and ensure authentic brand voice"
+  },
+  
+  "ai_patterns_to_remove": {
+    "generic_transitions": [
+      "In today's fast-paced world",
+      "In today's digital landscape",
+      "In this day and age",
+      "It's important to note that",
+      "Furthermore",
+      "Moreover",
+      "Additionally",
+      "In conclusion",
+      "To sum up",
+      "At the end of the day"
+    ],
+    "robotic_phrases": [
+      "Dive deep into",
+      "Unlock the secrets of",
+      "Embark on a journey",
+      "Revolutionize your",
+      "Game-changing",
+      "Cutting-edge",
+      "Leverage",
+      "Utilize",
+      "Implement strategies",
+      "Optimize performance"
+    ],
+    "corporate_speak": [
+      "Leverage synergies",
+      "Circle back",
+      "Touch base",
+      "Move the needle",
+      "Low-hanging fruit",
+      "Paradigm shift",
+      "Think outside the box",
+      "Win-win situation",
+      "At the end of the day",
+      "Take it offline"
+    ],
+    "overused_adjectives": [
+      "Incredible",
+      "Amazing",
+      "Awesome",
+      "Fantastic",
+      "Phenomenal",
+      "Revolutionary",
+      "Mind-blowing",
+      "Unbelievable",
+      "Extraordinary",
+      "Remarkable"
+    ],
+    "formulaic_hooks": [
+      "Are you tired of X? Here's how to Y",
+      "X is dead. Here's what works now",
+      "The truth about X that nobody tells you",
+      "X secrets that experts don't want you to know",
+      "Everything you know about X is wrong",
+      "The one thing you need to know about X"
+    ]
+  },
+  
+  "authenticity_elements_to_add": {
+    "conversational_markers": {
+      "contractions": [
+        "you're",
+        "I'm",
+        "it's",
+        "that's",
+        "here's",
+        "there's",
+        "can't",
+        "won't",
+        "don't"
+      ],
+      "direct_address": [
+        "Look,",
+        "Listen,",
+        "Here's the thing,",
+        "Real talk:",
+        "Let's be honest,",
+        "You know what?"
+      ],
+      "self_aware_moments": [
+        "I know, I know...",
+        "Bear with me here",
+        "Stay with me",
+        "This sounds weird, but",
+        "Hear me out"
+      ]
+    },
+    "specificity_types": {
+      "time_precision": {
+        "replace_vague": {
+          "recently": "last Tuesday",
+          "soon": "next Thursday",
+          "a while": "six months",
+          "quickly": "in 23 minutes",
+          "early morning": "5:47 AM"
+        }
+      },
+      "number_precision": {
+        "replace_vague": {
+          "many": "47",
+          "some": "6 out of 10",
+          "most": "83%",
+          "few": "3",
+          "several": "5"
+        }
+      },
+      "location_details": {
+        "replace_generic": {
+          "coffee shop": "the Starbucks on 5th and Main",
+          "home office": "my converted garage in Denver",
+          "online": "Zoom call with bad wifi"
+        }
+      }
+    },
+    "imperfection_markers": {
+      "uncertainty": [
+        "I'm still figuring this out",
+        "Not 100% sure, but",
+        "This might not work for everyone"
+      ],
+      "mistakes": [
+        "I got this wrong for 2 years",
+        "My first 3 attempts failed",
+        "I almost gave up on this"
+      ],
+      "process": [
+        "This took me 4 tries to get right",
+        "I learned this the hard way",
+        "After testing this 12 times"
+      ]
+    }
+  },
+  
+  "humanization_process": {
+    "step_1_analysis": {
+      "detect": [
+        "ai_patterns",
+        "missing_specificity",
+        "voice_issues",
+        "flow_problems",
+        "enthusiasm_level"
+      ],
+      "document": [
+        "patterns_found",
+        "locations_in_text",
+        "severity_rating"
+      ]
+    },
+    "step_2_pattern_removal": {
+      "priority": "high",
+      "method": "systematic_replacement",
+      "verify": "zero_patterns_remain"
+    },
+    "step_3_specificity_injection": {
+      "priority": "high",
+      "targets": [
+        "vague_timeframes",
+        "generic_numbers",
+        "abstract_examples"
+      ],
+      "verification": "concrete_details_present"
+    },
+    "step_4_voice_markers": {
+      "priority": "medium",
+      "apply": [
+        "signature_phrases",
+        "brand_personality",
+        "conversational_elements"
+      ]
+    },
+    "step_5_flow_adjustment": {
+      "priority": "medium",
+      "techniques": [
+        "vary_sentence_length",
+        "add_natural_breaks",
+        "conversational_transitions"
+      ]
+    },
+    "step_6_final_polish": {
+      "priority": "high",
+      "checklist": [
+        "ai_patterns_removed",
+        "specific_details_added",
+        "voice_markers_present",
+        "natural_flow_achieved",
+        "enthusiasm_appropriate",
+        "brand_voice_maintained"
+      ]
+    }
+  },
+  
+  "authenticity_scoring": {
+    "scale": {
+      "min": 1,
+      "max": 10,
+      "publish_threshold": 8.0
+    },
+    "scoring_criteria": {
+      "ai_pattern_absence": {
+        "weight": 0.25,
+        "perfect_score": "zero_patterns",
+        "good_score": "1-2_minor_patterns",
+        "poor_score": "3+_patterns"
+      },
+      "specificity_level": {
+        "weight": 0.25,
+        "perfect_score": "rich_concrete_details",
+        "good_score": "some_specificity",
+        "poor_score": "mostly_vague"
+      },
+      "voice_strength": {
+        "weight": 0.20,
+        "perfect_score": "strong_consistent_voice",
+        "good_score": "voice_emerging",
+        "poor_score": "weak_generic_voice"
+      },
+      "natural_flow": {
+        "weight": 0.20,
+        "perfect_score": "perfectly_conversational",
+        "good_score": "mostly_natural",
+        "poor_score": "stilted_robotic"
+      },
+      "overall_authenticity": {
+        "weight": 0.10,
+        "perfect_score": "indistinguishable_from_human",
+        "good_score": "mostly_authentic",
+        "poor_score": "obviously_ai"
+      }
+    },
+    "score_descriptions": {
+      "10": {
+        "label": "Perfectly Human",
+        "criteria": [
+          "zero_ai_patterns",
+          "rich_specific_details",
+          "strong_voice_markers",
+          "natural_conversational_flow",
+          "feels_lived_in_and_real"
+        ]
+      },
+      "8-9": {
+        "label": "Highly Authentic",
+        "criteria": [
+          "minimal_ai_patterns_1_2",
+          "good_specificity",
+          "clear_voice",
+          "mostly_natural_flow"
+        ]
+      },
+      "6-7": {
+        "label": "Moderately Human",
+        "criteria": [
+          "some_ai_patterns_3_5",
+          "some_specificity",
+          "voice_emerging",
+          "occasionally_stiff"
+        ]
+      },
+      "4-5": {
+        "label": "Slightly Robotic",
+        "criteria": [
+          "many_ai_patterns_6_plus",
+          "vague_details",
+          "weak_voice",
+          "stilted_flow"
+        ]
+      },
+      "1-3": {
+        "label": "Fully Robotic",
+        "criteria": [
+          "dominated_by_ai_patterns",
+          "no_specific_details",
+          "no_voice_markers",
+          "completely_unnatural"
+        ]
+      }
+    }
+  },
+  
+  "detection_framework": {
+    "red_flags": [
+      "generic_transitions_10_plus",
+      "overused_adjectives_multiple",
+      "formulaic_hooks",
+      "corporate_speak",
+      "excessive_enthusiasm",
+      "no_specific_details",
+      "perfect_grammar_too_perfect"
+    ],
+    "green_flags": [
+      "specific_times_dates_numbers",
+      "personal_anecdotes",
+      "imperfections_acknowledged",
+      "conversational_asides",
+      "varied_sentence_length",
+      "natural_transitions",
+      "personality_quirks"
+    ]
+  },
+  
+  "platform_specific_rules": {
+    "x_twitter": {
+      "max_hype_words": 1,
+      "contractions": "required",
+      "specificity": "high",
+      "voice_strength": "strong",
+      "enthusiasm_level": "moderate"
+    },
+    "linkedin": {
+      "story_opening": "recommended",
+      "specific_numbers": "required",
+      "paragraph_breaks": "strategic",
+      "conversational_tone": "professional_casual",
+      "personal_vulnerability": "encouraged"
+    },
+    "instagram": {
+      "emoji_limit": 3,
+      "specific_time_details": "required",
+      "personal_experience": "required",
+      "conversational_tone": "casual",
+      "advice_specificity": "concrete"
+    },
+    "email": {
+      "subject_line": "specific_intriguing",
+      "opening": "personal_no_dear_subscriber",
+      "story_driven": "required",
+      "vulnerability": "encouraged",
+      "transitions": "natural"
+    },
+    "blog": {
+      "opening": "story_driven",
+      "dates_numbers": "specific",
+      "sections": "conversational",
+      "insights": "personal",
+      "flow": "natural"
+    }
+  },
+  
+  "common_fixes": {
+    "generic_to_specific": {
+      "before": "Recently, a client achieved great results",
+      "after": "Last Thursday at 2:47 PM, Marcus texted me a screenshot. $12K month. His best ever."
+    },
+    "formal_to_conversational": {
+      "before": "It is important to note that consistency yields optimal results",
+      "after": "Look, consistency wins. Every time."
+    },
+    "hype_to_reality": {
+      "before": "This AMAZING strategy will REVOLUTIONIZE your business!",
+      "after": "This strategy works. I've tested it with 31 clients. 24 saw improvement in month one."
+    },
+    "abstract_to_concrete": {
+      "before": "Effective time management is crucial for productivity",
+      "after": "Block 90 minutes. Turn off Slack. Work on one thing. That's it."
+    },
+    "perfect_to_imperfect": {
+      "before": "I implemented this strategy and immediately saw success",
+      "after": "I tried this 4 times before it worked. The first 3 attempts? Complete failures. But attempt 4..."
+    }
+  },
+  
+  "integration": {
+    "from_content_engine": {
+      "receives": [
+        "generated_content",
+        "platform_type",
+        "brand_voice_applied",
+        "frameworks_used",
+        "quality_score"
+      ],
+      "actions": [
+        "review_content",
+        "identify_ai_patterns",
+        "add_specific_details",
+        "inject_voice_markers",
+        "create_natural_flow",
+        "return_humanized_version"
+      ]
+    },
+    "from_narrative_strategist": {
+      "receives": [
+        "brand_voice_characteristics",
+        "signature_phrases",
+        "messaging_style",
+        "language_patterns",
+        "authenticity_markers"
+      ],
+      "applies": [
+        "voice_throughout",
+        "signature_phrases_naturally",
+        "messaging_style_match",
+        "language_patterns",
+        "authenticity_markers"
+      ]
+    },
+    "from_voice_codex": {
+      "receives": [
+        "narrative_bricks",
+        "personal_anecdotes",
+        "unique_metaphors",
+        "recurring_themes"
+      ],
+      "uses": [
+        "bricks_for_inspiration",
+        "relevant_anecdotes",
+        "established_metaphors",
+        "theme_reinforcement"
+      ]
+    },
+    "to_publishing": {
+      "provides": [
+        "humanized_content",
+        "authenticity_score_8_plus",
+        "platform_ready_formatting",
+        "final_approval"
+      ]
+    }
+  },
+  
+  "quality_control_checklist": {
+    "ai_pattern_removal": {
+      "no_in_todays": true,
+      "no_dive_deep": true,
+      "no_unlock_secrets": true,
+      "no_game_changing": true,
+      "no_revolutionary_unless_ironic": true,
+      "no_corporate_speak": true,
+      "no_formulaic_hooks": true
+    },
+    "specificity_added": {
+      "specific_numbers": true,
+      "dates_times_included": true,
+      "names_mentioned": true,
+      "locations_specified": true,
+      "concrete_examples": true,
+      "precise_details": true
+    },
+    "voice_markers_present": {
+      "signature_phrases": true,
+      "brand_tone_maintained": true,
+      "personal_quirks": true,
+      "conversational_elements": true,
+      "natural_contractions": true,
+      "authentic_personality": true
+    },
+    "natural_flow": {
+      "varied_sentence_length": true,
+      "natural_paragraph_breaks": true,
+      "smooth_transitions": true,
+      "conversational_rhythm": true,
+      "appropriate_pacing": true
+    },
+    "authenticity_achieved": {
+      "sounds_human_not_ai": true,
+      "could_fool_reader": true,
+      "feels_lived_in": true,
+      "no_robotic_moments": true,
+      "score_8_plus": true
+    }
+  },
+  
+  "best_practices": {
+    "do": [
+      "read_for_ai_patterns_first",
+      "add_specific_concrete_details",
+      "inject_personality_consistently",
+      "vary_sentence_length_naturally",
+      "use_real_numbers_and_dates",
+      "keep_brand_voice_central",
+      "trust_reader_intelligence",
+      "preserve_core_message"
+    ],
+    "dont": [
+      "add_false_details",
+      "change_core_message",
+      "over_humanize_too_casual",
+      "remove_all_enthusiasm",
+      "ignore_voice_guidelines",
+      "approve_below_8_score",
+      "skip_checklist"
+    ]
+  },
+  
+  "storage_paths": {
+    "sessions": "knowledge-base/sessions/humanizer/",
+    "persistent": {
+      "humanized_content": "knowledge-base/persistent/humanizer/humanized-content/",
+      "authenticity_scores": "knowledge-base/persistent/humanizer/authenticity-scores/",
+      "voice_library": "knowledge-base/persistent/humanizer/voice-library/"
+    }
+  },
+  
+  "file_naming": {
+    "humanized_content": "{platform}-{date}-humanized.md",
+    "original_ai_version": "{platform}-{date}-original.md",
+    "changes_made": "{platform}-{date}-changes.md"
+  },
+  
+  "change_log_template": {
+    "content_id": "string",
+    "platform": "string",
+    "humanized_date": "YYYY-MM-DD",
+    "authenticity_score": "number",
+    "changes_made": {
+      "ai_patterns_removed": ["list"],
+      "specificity_added": ["list"],
+      "voice_markers_injected": ["list"],
+      "flow_improvements": ["list"]
+    }
+  },
+  
+  "success_criteria": [
+    "authenticity_score_8.5_plus_average",
+    "zero_ai_patterns_in_finals",
+    "specific_details_every_piece",
+    "voice_markers_consistently_applied",
+    "natural_flow_human_written_feel",
+    "brand_voice_maintained",
+    "reader_feedback_sounds_like_you",
+    "no_rewrites_needed_first_pass"
+  ],
+  
+  "features": {
+    "ai_pattern_detection": true,
+    "specificity_injection": true,
+    "voice_marker_application": true,
+    "flow_optimization": true,
+    "authenticity_scoring": true,
+    "platform_specific_rules": true,
+    "quality_control_checklist": true,
+    "change_logging": true
+  }
+}

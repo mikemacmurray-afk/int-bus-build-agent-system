@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusinessBuildAgenticSystem | Daily Copilot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e8eaed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* LEFT CHAT PANE - COPILOT */
+        .copilot-pane {
+            width: 380px;
+            background: rgba(10, 14, 39, 0.95);
+            border-right: 1px solid rgba(124, 58, 237, 0.3);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copilot-header {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copilot-title {
+            font-size: 1.4em;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .copilot-subtitle {
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        .copilot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 12px;
+            max-width: 90%;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.copilot {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.2));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            align-self: flex-end;
+        }
+
+        .message-time {
+            font-size: 0.7em;
+            opacity: 0.6;
+            margin-top: 8px;
+        }
+
+        .copilot-input-area {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .copilot-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95em;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .copilot-input:focus {
+            outline: none;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+
+        .copilot-send {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copilot-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        /* 5-LINE SUGGESTION HEADER */
+        .suggestion-header {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(236, 72, 153, 0.15));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .suggestion-line {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .suggestion-line:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-label {
+            font-weight: 700;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #7c3aed;
+            min-width: 120px;
+            padding-top: 2px;
+        }
+
+        .suggestion-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .suggestion-icon {
+            font-size: 1.2em;
+        }
+
+        /* METRICS SECTION - COMPACT */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+
+        .metric-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a0a0a0;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* AGENTS GRID - COMPACT */
+        .agents-section {
+            margin-top: 25px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .agent-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .agent-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .agent-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8em;
+            color: #7c3aed;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .agent-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .agent-pillar {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ec4899;
+            margin-bottom: 12px;
+        }
+
+        .agent-description {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+
+        .agent-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .agent-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(124, 58, 237, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(124, 58, 237, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .copilot-pane {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .copilot-pane {
+                width: 100%;
+                max-height: 400px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- LEFT: DAILY BUSINESS COPILOT CHAT PANE -->
+        <div class="copilot-pane">
+            <div class="copilot-header">
+                <div class="copilot-title">🤝 Daily Business Copilot</div>
+                <div class="copilot-subtitle">Your Strategic Partner</div>
+            </div>
+
+            <div class="copilot-messages" id="copilotMessages">
+                <div class="message copilot">
+                    Good morning! ☀️
+                    <br><br>
+                    Your system is humming:
+                    <br>• Content: Strong (4 last week)
+                    <br>• Proof: Needs attention
+                    <br>• Positioning: Solid (8.1)
+                    <br><br>
+                    What's your main focus for today?
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+            <div class="copilot-input-area">
+                <textarea 
+                    id="copilotInput" 
+                    class="copilot-input" 
+                    placeholder="Share your thoughts, goals, wins, or questions..."
+                ></textarea>
+                <button class="copilot-send" onclick="sendMessage()">Send Message</button>
+            </div>
+        </div>
+
+        <!-- RIGHT: MAIN DASHBOARD CONTENT -->
+        <div class="main-content">
+            <!-- 5-LINE SUGGESTION HEADER -->
+            <div class="suggestion-header">
+                <div class="suggestion-line">
+                    <span class="suggestion-icon">🎯</span>
+                    <span class="suggestion-label">Strategic Focus</span>
+                    <span class="suggestion-text">Develop 'speed-to-results' positioning - your proof shows 83% of clients get wins in 30 days</span>
+                </div>
+                <div class="suggestion-line">
+                    <span class="suggestion-icon">📝</span>
+                    <span class="suggestion-label">Content Gold</span>
+                    <span class="suggestion-text">Voice brick #42 (score 8.7) on 'niche clarity' - create X thread + LinkedIn post today</span>
+                </div>
+                <div class="suggestion-line">
+                    <span class="suggestion-icon">⚠️</span>
+                    <span class="suggestion-label">Gap Alert</span>
+                    <span class="suggestion-text">Only 2 recent testimonials - schedule 3 client check-ins this week</span>
+                </div>
+                <div class="suggestion-line">
+                    <span class="suggestion-icon">⚡</span>
+                    <span class="suggestion-label">Quick Win</span>
+                    <span class="suggestion-text">Humanize yesterday's LinkedIn draft (6.2 score) - 10 minutes to get it to 8.5+</span>
+                </div>
+                <div class="suggestion-line">
+                    <span class="suggestion-icon">🚀</span>
+                    <span class="suggestion-label">Momentum</span>
+                    <span class="suggestion-text">You published 4 pieces last week - consistency is building! Keep this energy going</span>
+                </div>
+            </div>
+
+            <!-- BUSINESS METRICS - COMPACT -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">This Month</div>
+                    <div class="metric-value">23</div>
+                    <div class="metric-label">Pieces Published</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Avg Quality</div>
+                    <div class="metric-value">8.4</div>
+                    <div class="metric-label">Authenticity Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Proof Assets</div>
+                    <div class="metric-value">12</div>
+                    <div class="metric-label">Testimonials</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Positioning</div>
+                    <div class="metric-value">8.1</div>
+                    <div class="metric-label">Clarity Score</div>
+                </div>
+            </div>
+
+            <!-- AGENTS SECTION - COMPACT -->
+            <div class="agents-section">
+                <h2 class="section-title">Your 6 Specialized Agents</h2>
+                
+                <div class="agents-grid">
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 01</div>
+                        <div class="agent-name">Credibility Agent</div>
+                        <div class="agent-pillar">PROOF</div>
+                        <div class="agent-description">
+                            Extract and organize proof from conversations. Build your wall of credibility.
+                        </div>
+                        <a href="agents/credibility.html" class="agent-link">Open Agent →</a>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 02</div>
+                        <div class="agent-name">Voice Codex</div>
+                        <div class="agent-pillar">INSIGHT</div>
+                        <div class="agent-description">
+                            Capture narrative bricks and unique insights. Build your voice library.
+                        </div>
+                        <a href="agents/voice-codex.html" class="agent-link">Open Agent →</a>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 03</div>
+                        <div class="agent-name">Narrative Strategist</div>
+                        <div class="agent-pillar">POSITIONING</div>
+                        <div class="agent-description">
+                            Develop positioning frameworks and messaging strategy. Evolve your brand.
+                        </div>
+                        <a href="agents/narrative-strategist.html" class="agent-link">Open Agent →</a>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 04</div>
+                        <div class="agent-name">Content Engine</div>
+                        <div class="agent-pillar">DISTRIBUTION</div>
+                        <div class="agent-description">
+                            Multiply content across 6 platforms. Create 20+ pieces weekly.
+                        </div>
+                        <a href="agents/content-engine.html" class="agent-link">Open Agent →</a>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 05</div>
+                        <div class="agent-name">Humanizer</div>
+                        <div class="agent-pillar">AUTHENTICITY</div>
+                        <div class="agent-description">
+                            Remove AI patterns and inject personality. Score 8.5+ authenticity.
+                        </div>
+                        <a href="agents/humanizer.html" class="agent-link">Open Agent →</a>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-number">AGENT 06</div>
+                        <div class="agent-name">Speaking Coach</div>
+                        <div class="agent-pillar">DELIVERY</div>
+                        <div class="agent-description">
+                            Optimize presentations and speaking engagements. Command the stage.
+                        </div>
+                        <a href="agents/speaking-coach.html" class="agent-link">Open Agent →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Copilot conversation functionality
+        let conversationHistory = [];
+
+        function sendMessage() {
+            const input = document.getElementById('copilotInput');
+            const messagesContainer = document.getElementById('copilotMessages');
+            const userMessage = input.value.trim();
+
+            if (!userMessage) return;
+
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'message user';
+            userDiv.innerHTML = `
+                ${userMessage}
+                <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+            `;
+            messagesContainer.appendChild(userDiv);
+
+            // Store in history
+            conversationHistory.push({
+                role: 'user',
+                message: userMessage,
+                timestamp: new Date().toISOString()
+            });
+
+            // Clear input
+            input.value = '';
+
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Generate copilot response
+            setTimeout(() => {
+                const response = generateCopilotResponse(userMessage);
+                const copilotDiv = document.createElement('div');
+                copilotDiv.className = 'message copilot';
+                copilotDiv.innerHTML = `
+                    ${response}
+                    <div class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                `;
+                messagesContainer.appendChild(copilotDiv);
+
+                // Store in history
+                conversationHistory.push({
+                    role: 'copilot',
+                    message: response,
+                    timestamp: new Date().toISOString()
+                });
+
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+                // Save to localStorage
+                localStorage.setItem('copilot_conversation', JSON.stringify(conversationHistory));
+            }, 800);
+        }
+
+        function generateCopilotResponse(userInput) {
+            const input = userInput.toLowerCase();
+
+            // Pattern matching for different input types
+            if (input.includes('content') || input.includes('create') || input.includes('post')) {
+                return `LOVE IT! Content creation mode activated 📝
+                <br><br>
+                HIGH-VALUE INSIGHTS:
+                <br>1. Voice brick #42 - 'Niche clarity' (8.7)
+                <br>&nbsp;&nbsp;&nbsp;→ X thread + LinkedIn + Instagram
+                <br><br>
+                2. Proof: Sarah's transformation
+                <br>&nbsp;&nbsp;&nbsp;→ Case study content
+                <br><br>
+                WORKFLOW (90 min):
+                <br>• Content Engine: Generate (30m)
+                <br>• Humanizer: Polish to 8.5+ (20m)
+                <br>• Schedule for next week
+                <br><br>
+                Ready to create FIRE content! 🔥`;
+            }
+
+            if (input.includes('win') || input.includes('client') || input.includes('success')) {
+                return `🎉 YES!!! THIS IS HUGE!
+                <br><br>
+                CAPTURE THIS NOW (5 min):
+                <br>1. Open Credibility Agent
+                <br>2. Extract specific details
+                <br>3. Tag as proof asset
+                <br><br>
+                This becomes sales page GOLD.
+                <br><br>
+                YOU are delivering real results!
+                <br>Proof compounds trust.
+                <br><br>
+                Crushing it! 💪🔥`;
+            }
+
+            if (input.includes('overwhelm') || input.includes('stuck') || input.includes('help') || input.includes('lost')) {
+                return `Hey, I got you. Deep breath. 💙
+                <br><br>
+                When scattered, go to basics:
+                <br><br>
+                TODAY'S ONE THING:
+                <br>Create 1 authority-building piece.
+                <br><br>
+                SIMPLE PATH (27 min):
+                <br>1. Voice Codex (2m) - Pick brick #42
+                <br>2. Content Engine (15m) - X thread
+                <br>3. Humanizer (10m) - Polish
+                <br>4. Post it
+                <br><br>
+                You build ONE action at a time.
+                <br><br>
+                Ready? Let's go. 🚀`;
+            }
+
+            if (input.includes('speaking') || input.includes('presentation') || input.includes('podcast') || input.includes('interview')) {
+                return `Awesome! Speaking builds HUGE authority 🎙️
+                <br><br>
+                PREP PLAN:
+                <br>1. Speaking Coach: Review your stories
+                <br>2. Craft 5 quotable one-liners (15m)
+                <br>3. Full practice run (30m)
+                <br><br>
+                Also - capture any proof mentioned during the event!
+                <br><br>
+                You've got this! This could lead to 3-5 more speaking gigs. 💪`;
+            }
+
+            // Default encouraging response
+            return `Great! Let's make today count 🎯
+            <br><br>
+            Based on your system:
+            <br>• Content momentum: Strong
+            <br>• Positioning: Clear (8.1)
+            <br>• Proof: Could use more
+            <br><br>
+            I suggest:
+            <br>1. Strategic focus: Positioning
+            <br>2. Content: Use brick #42 (8.7)
+            <br>3. Quick win: Capture proof
+            <br><br>
+            Pick one and let's dive in!
+            <br><br>
+            You're building something remarkable 🚀`;
+        }
+
+        // Handle Enter key
+        document.getElementById('copilotInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Load conversation history
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('copilot_conversation');
+            if (saved) {
+                conversationHistory = JSON.parse(saved);
+            }
+
+            // Rotate suggestions on page load
+            rotateSuggestions();
+        });
+
+        // Rotate suggestions randomly
+        function rotateSuggestions() {
+            const suggestions = [
+                {
+                    strategic: "Develop 'speed-to-results' positioning - proof shows 83% get wins in 30 days",
+                    content: "Voice brick #42 (8.7) on 'niche clarity' - create content series",
+                    gap: "Only 2 recent testimonials - schedule 3 client check-ins",
+                    quick: "Humanize yesterday's draft (6.2) - 10 min to 8.5+",
+                    momentum: "4 pieces last week - consistency building! 🚀"
+                },
+                {
+                    strategic: "Double down on 'niche clarity' theme - 2x engagement on this content",
+                    content: "Sarah's case study ready - create LinkedIn + email + blog versions",
+                    gap: "7 high-quality bricks unused - untapped content gold",
+                    quick: "Repurpose Monday's LinkedIn to Instagram - 15 minutes",
+                    momentum: "Authenticity scores trending up: 7.2 → 8.4 avg!"
+                },
+                {
+                    strategic: "Shift messaging to 'established coaches' - better proof alignment",
+                    content: "Voice brick #56 on 'speed wins' (8.4) - perfect for email",
+                    gap: "Speaking event in 14 days - practice run needed",
+                    quick: "Capture today's client win - 5 min for conversion gold",
+                    momentum: "Consistency streak: 14 days - unstoppable! 💪"
+                }
+            ];
+
+            // Random suggestion set
+            const random = suggestions[Math.floor(Math.random() * suggestions.length)];
+
+            // Update UI (if not first load)
+            if (document.querySelectorAll('.suggestion-text').length > 0) {
+                const texts = document.querySelectorAll('.suggestion-text');
+                texts[0].textContent = random.strategic;
+                texts[1].textContent = random.content;
+                texts[2].textContent = random.gap;
+                texts[3].textContent = random.quick;
+                texts[4].textContent = random.momentum;
+            }
+        }
+    </script>
+</body>
+</html>

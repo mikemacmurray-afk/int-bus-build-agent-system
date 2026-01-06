@@ -1,0 +1,601 @@
+{
+  "agent_info": {
+    "name": "Content Engine Agent",
+    "version": "1.0",
+    "pillar": "Distribution",
+    "status": "active",
+    "description": "Repurpose and generate content across multiple platforms while maintaining brand voice"
+  },
+  
+  "supported_platforms": {
+    "x_twitter": {
+      "enabled": true,
+      "formats": ["thread", "single", "quote"],
+      "character_limit": 280,
+      "optimal_thread_length": "6-8 tweets",
+      "hashtag_limit": 2,
+      "engagement_hook": "required"
+    },
+    "linkedin": {
+      "enabled": true,
+      "formats": ["long-form", "poll", "carousel"],
+      "optimal_length": "1300-2000 characters",
+      "line_break_strategy": "short paragraphs",
+      "first_line_critical": true,
+      "engagement_question": "recommended"
+    },
+    "instagram": {
+      "enabled": true,
+      "formats": ["feed-post", "carousel", "reel-script"],
+      "caption_length": "150-200 words",
+      "carousel_slides": "5-10",
+      "hashtag_count": "10-15",
+      "hook_placement": "first_line"
+    },
+    "youtube": {
+      "enabled": true,
+      "formats": ["short-script", "long-form-outline"],
+      "short_duration": "60 seconds max",
+      "hook_window": "3 seconds",
+      "subtitle_friendly": true
+    },
+    "email": {
+      "enabled": true,
+      "formats": ["newsletter", "sequence", "broadcast"],
+      "subject_line_length": "6-8 words",
+      "preview_text": "required",
+      "single_cta": "required",
+      "scannable_format": true
+    },
+    "blog": {
+      "enabled": true,
+      "formats": ["article", "guide", "case-study"],
+      "word_count": "1200-2000",
+      "seo_optimized": true,
+      "internal_links": "2-3",
+      "external_links": "1-2"
+    },
+    "facebook": {
+      "enabled": false,
+      "formats": ["post", "story"]
+    },
+    "tiktok": {
+      "enabled": false,
+      "formats": ["script"]
+    }
+  },
+  
+  "content_types": {
+    "educational": {
+      "percentage_target": 40,
+      "formats": [
+        "how-to-guides",
+        "frameworks",
+        "step-by-step",
+        "concept-explanations",
+        "tutorials"
+      ]
+    },
+    "proof": {
+      "percentage_target": 30,
+      "formats": [
+        "case-studies",
+        "transformations",
+        "testimonials",
+        "results-metrics",
+        "before-after"
+      ]
+    },
+    "engagement": {
+      "percentage_target": 20,
+      "formats": [
+        "questions-polls",
+        "controversial-takes",
+        "personal-stories",
+        "behind-scenes",
+        "challenges"
+      ]
+    },
+    "promotional": {
+      "percentage_target": 10,
+      "formats": [
+        "offers",
+        "programs",
+        "lead-magnets",
+        "webinars",
+        "sales"
+      ]
+    }
+  },
+  
+  "quality_standards": {
+    "engagement_score": {
+      "hook_strength": {
+        "weight": 0.25,
+        "target": 8
+      },
+      "value_delivery": {
+        "weight": 0.30,
+        "target": 8
+      },
+      "proof_integration": {
+        "weight": 0.20,
+        "target": 7
+      },
+      "cta_clarity": {
+        "weight": 0.15,
+        "target": 8
+      },
+      "platform_optimization": {
+        "weight": 0.10,
+        "target": 9
+      },
+      "minimum_overall": 7.5
+    },
+    "brand_alignment": {
+      "voice_consistency": "required",
+      "message_alignment": "required",
+      "proof_support": "required",
+      "authenticity": "required",
+      "platform_fit": "required"
+    },
+    "effectiveness_rubric": {
+      "excellent": {
+        "range": [9, 10],
+        "criteria": [
+          "immediately_engaging_hook",
+          "clear_actionable_value",
+          "strong_proof_integration",
+          "compelling_cta",
+          "perfect_platform_fit"
+        ]
+      },
+      "good": {
+        "range": [7, 8],
+        "criteria": [
+          "solid_hook",
+          "good_value_delivery",
+          "some_proof",
+          "clear_cta",
+          "platform_appropriate"
+        ]
+      },
+      "needs_work": {
+        "range": [5, 6],
+        "criteria": [
+          "weak_hook",
+          "vague_value",
+          "missing_proof",
+          "unclear_cta",
+          "poor_platform_fit"
+        ]
+      },
+      "reject": {
+        "range": [1, 4],
+        "criteria": [
+          "no_hook",
+          "no_value",
+          "no_proof",
+          "no_cta",
+          "wrong_format"
+        ]
+      }
+    }
+  },
+  
+  "content_formulas": {
+    "hook_formula": {
+      "structure": "[Specific Result] + [Unexpected Element] + [Promise]",
+      "examples": [
+        "I made $50K in 30 days. Here's the counterintuitive strategy I used.",
+        "Lost 47 clients in one month. Best thing that ever happened. Here's why."
+      ]
+    },
+    "value_formula": {
+      "structure": "[Problem] + [Why It Matters] + [Solution Framework] + [How to Apply]",
+      "platform_variations": {
+        "x_twitter": "Problem → 3 Insights → Proof → Framework → CTA",
+        "linkedin": "Problem → Story → Insight → Proof → Takeaway",
+        "instagram": "Hook → Value Points → Example → CTA"
+      }
+    },
+    "proof_formula": {
+      "structure": "[Name] was [Struggle] → [Intervention] → [Specific Result] → [Current State]",
+      "example": "Sarah was stuck at $3K/month after 2 years. After the Niche Clarity Sprint, she hit $18K in month one. Now she's at $50K/month."
+    },
+    "cta_formula": {
+      "structure": "[Action] + [Value] + [Friction Reducer]",
+      "examples": [
+        "Comment 'FRAMEWORK' and I'll send you the template (free)",
+        "Download the guide here (no email required)"
+      ]
+    }
+  },
+  
+  "platform_templates": {
+    "x_twitter_thread": {
+      "structure": [
+        "tweet_1_hook",
+        "tweet_2_context",
+        "tweet_3_5_insights",
+        "tweet_6_proof",
+        "tweet_7_framework",
+        "tweet_8_cta"
+      ],
+      "formatting": {
+        "line_breaks": "required",
+        "character_limit": 280,
+        "hashtags": "1-2 max"
+      }
+    },
+    "linkedin_post": {
+      "structure": [
+        "hook_2_lines",
+        "story_300_500_words",
+        "insight_200_300_words",
+        "proof_100_200_words",
+        "takeaway_50_100_words",
+        "cta"
+      ],
+      "formatting": {
+        "paragraph_length": "2-3 lines",
+        "line_breaks": "strategic",
+        "emoji_bullets": "optional"
+      }
+    },
+    "instagram_caption": {
+      "structure": [
+        "hook_first_line",
+        "story_value_3_5_paragraphs",
+        "proof_example",
+        "cta",
+        "hashtags_10_15"
+      ],
+      "carousel_structure": [
+        "hook_slide",
+        "value_slides_2_4",
+        "proof_slide",
+        "framework_visual",
+        "examples_steps",
+        "cta_slide"
+      ]
+    },
+    "email_newsletter": {
+      "structure": [
+        "subject_line",
+        "preview_text",
+        "personal_opening",
+        "story_hook_3_4_paragraphs",
+        "value_teaching",
+        "proof_example",
+        "primary_cta",
+        "secondary_content_optional"
+      ],
+      "formatting": {
+        "paragraph_length": "3-4 lines",
+        "subheadings": "for scannability",
+        "one_primary_cta": "required"
+      }
+    },
+    "blog_post": {
+      "structure": [
+        "seo_title_h1",
+        "meta_description",
+        "introduction_100_150_words",
+        "main_sections_h2_300_400_words_each",
+        "real_world_example_200_300_words",
+        "conclusion_100_150_words"
+      ],
+      "seo_elements": {
+        "internal_links": "2-3",
+        "external_links": "1-2",
+        "alt_text": "all images",
+        "url_structure": "keyword-focused"
+      }
+    },
+    "youtube_short_script": {
+      "structure": [
+        "0:00-0:03 hook_visual",
+        "0:03-0:10 problem_setup",
+        "0:10-0:35 value_delivery",
+        "0:35-0:45 proof_example",
+        "0:45-0:55 solution_cta",
+        "0:55-0:60 end_screen"
+      ],
+      "requirements": {
+        "text_overlay": "every frame",
+        "subtitles": "required",
+        "format": "vertical 9:16",
+        "pacing": "quick cuts every 3-5 seconds"
+      }
+    }
+  },
+  
+  "repurposing_workflows": {
+    "voice_note_to_multiplatform": {
+      "input": "3 minute voice note",
+      "time_estimate": "30 minutes",
+      "outputs": [
+        "x_thread",
+        "linkedin_post",
+        "instagram_carousel",
+        "email_section",
+        "quote_graphics"
+      ],
+      "output_count": "5-7 pieces"
+    },
+    "longform_to_atomized": {
+      "input": "2000 word article",
+      "time_estimate": "45 minutes",
+      "outputs": [
+        "x_threads_from_sections",
+        "linkedin_posts_from_insights",
+        "instagram_carousels",
+        "email_series",
+        "youtube_short_scripts",
+        "quote_graphics"
+      ],
+      "output_count": "20-30 pieces"
+    },
+    "proof_asset_to_amplification": {
+      "input": "client testimonial",
+      "time_estimate": "25 minutes",
+      "outputs": [
+        "x_thread_proof_narrative",
+        "linkedin_case_study",
+        "instagram_before_after",
+        "email_success_story",
+        "quote_graphics",
+        "sales_page_addition"
+      ],
+      "output_count": "8-10 pieces"
+    },
+    "framework_to_educational_series": {
+      "input": "new framework",
+      "time_estimate": "60 minutes",
+      "outputs": [
+        "x_thread_overview",
+        "linkedin_deep_dive",
+        "instagram_visual_framework",
+        "email_series",
+        "blog_comprehensive_guide",
+        "youtube_short",
+        "downloadable_pdf",
+        "quote_cards"
+      ],
+      "output_count": "10+ pieces"
+    }
+  },
+  
+  "content_calendar": {
+    "weekly_schedule": {
+      "monday": {
+        "linkedin": "educational_long_form",
+        "x_thread": "framework_breakdown"
+      },
+      "tuesday": {
+        "instagram": "proof_story_carousel",
+        "email": "newsletter_with_teaching"
+      },
+      "wednesday": {
+        "x_thread": "controversial_take",
+        "linkedin": "case_study_post"
+      },
+      "thursday": {
+        "instagram": "behind_the_scenes",
+        "youtube_short": "quick_tip"
+      },
+      "friday": {
+        "linkedin": "weekly_wins_recap",
+        "x_thread": "resource_roundup"
+      }
+    },
+    "monthly_batching": {
+      "week_1": "gather_and_plan",
+      "week_2": "create_primary",
+      "week_3": "multiply",
+      "week_4": "polish_and_schedule"
+    }
+  },
+  
+  "integration": {
+    "from_narrative_strategist": {
+      "receives": [
+        "messaging_frameworks",
+        "positioning_guidelines",
+        "content_theme_priorities",
+        "brand_voice_characteristics",
+        "language_style_guides"
+      ],
+      "applies": [
+        "transformation_statements",
+        "messaging_templates",
+        "positioning_guidelines",
+        "brand_voice",
+        "theme_priorities"
+      ]
+    },
+    "from_voice_codex": {
+      "receives": [
+        "narrative_bricks",
+        "theme_clusters",
+        "quality_scores",
+        "connection_patterns"
+      ],
+      "applies": [
+        "convert_bricks_to_content",
+        "use_metaphors_in_headlines",
+        "apply_distinctions",
+        "build_around_themes"
+      ]
+    },
+    "from_credibility_agent": {
+      "receives": [
+        "proof_assets",
+        "testimonials",
+        "case_studies",
+        "metrics",
+        "performance_data"
+      ],
+      "applies": [
+        "feature_proof_in_content",
+        "create_case_study_posts",
+        "use_testimonials",
+        "highlight_metrics"
+      ]
+    },
+    "to_humanizer_agent": {
+      "provides": [
+        "generated_content",
+        "brand_voice_applied",
+        "frameworks_used"
+      ],
+      "handoff_instructions": [
+        "add_human_touches",
+        "inject_personality",
+        "remove_ai_phrases",
+        "ensure_authenticity"
+      ]
+    }
+  },
+  
+  "performance_metrics": {
+    "engagement_benchmarks": {
+      "x_twitter": {
+        "primary": "engagement_rate",
+        "target": ">5%",
+        "secondary": ["replies", "retweets", "bookmarks"]
+      },
+      "linkedin": {
+        "primary": "comment_rate",
+        "target": ">2%",
+        "secondary": ["shares", "reactions"]
+      },
+      "instagram": {
+        "primary": "save_rate",
+        "target": ">3%",
+        "secondary": ["shares", "comments"]
+      },
+      "email": {
+        "primary": "click_rate",
+        "target": ">5%",
+        "secondary": ["open_rate", "reply_rate"]
+      },
+      "blog": {
+        "primary": "time_on_page",
+        "target": ">3 minutes",
+        "secondary": ["scroll_depth", "shares"]
+      }
+    },
+    "volume_targets": {
+      "weekly": "20+ pieces from 3-5 inputs",
+      "monthly": "80-100 pieces",
+      "quality_threshold": "7.5+ average engagement score"
+    }
+  },
+  
+  "best_practices": {
+    "x_twitter": {
+      "do": [
+        "start_with_strong_hooks",
+        "use_thread_format_for_depth",
+        "include_proof_in_middle",
+        "one_clear_cta",
+        "use_line_breaks"
+      ],
+      "dont": [
+        "overuse_hashtags",
+        "make_every_tweet_promotional",
+        "write_walls_of_text",
+        "forget_cta"
+      ]
+    },
+    "linkedin": {
+      "do": [
+        "hook_in_first_2_lines",
+        "tell_stories",
+        "show_proof_with_numbers",
+        "strategic_line_breaks",
+        "respond_to_comments"
+      ],
+      "dont": [
+        "use_clickbait",
+        "write_without_line_breaks",
+        "overuse_hashtags",
+        "ignore_comments"
+      ]
+    },
+    "instagram": {
+      "do": [
+        "hook_in_first_line",
+        "create_valuable_carousels",
+        "consistent_visual_style",
+        "strategic_hashtags",
+        "engage_with_comments"
+      ],
+      "dont": [
+        "post_low_quality_images",
+        "write_caption_after_posting",
+        "ignore_hashtag_research",
+        "forget_cta"
+      ]
+    },
+    "email": {
+      "do": [
+        "optimize_subject_line",
+        "write_conversationally",
+        "keep_scannable",
+        "one_primary_cta",
+        "test_before_sending"
+      ],
+      "dont": [
+        "bury_the_cta",
+        "write_long_paragraphs",
+        "use_generic_subjects",
+        "send_without_testing"
+      ]
+    }
+  },
+  
+  "storage_paths": {
+    "sessions": "knowledge-base/sessions/content-engine/",
+    "persistent": {
+      "published": "knowledge-base/persistent/content-library/published/",
+      "drafts": "knowledge-base/persistent/content-library/drafts/",
+      "analytics": "knowledge-base/persistent/content-library/analytics/"
+    }
+  },
+  
+  "file_naming": {
+    "x_twitter": "thread-{YYYY-MM-DD}-{topic-slug}.md",
+    "linkedin": "post-{YYYY-MM-DD}-{topic-slug}.md",
+    "instagram": "carousel-{YYYY-MM-DD}-{topic-slug}.md",
+    "email": "newsletter-{YYYY-MM-DD}-{topic-slug}.md",
+    "blog": "post-{YYYY-MM-DD}-{topic-slug}.md",
+    "youtube": "short-{YYYY-MM-DD}-{topic-slug}.md"
+  },
+  
+  "features": {
+    "content_multiplication": true,
+    "platform_optimization": true,
+    "brand_voice_consistency": true,
+    "proof_integration": true,
+    "engagement_scoring": true,
+    "batch_creation": true,
+    "performance_tracking": true,
+    "humanizer_handoff": true,
+    "seo_optimization": true,
+    "visual_content_scripting": false
+  },
+  
+  "success_criteria": [
+    "volume_20_plus_weekly",
+    "quality_7.5_plus_average",
+    "voice_consistency_maintained",
+    "30_min_per_workflow",
+    "meeting_platform_benchmarks",
+    "using_narrative_strategist_messaging",
+    "every_claim_backed_by_proof",
+    "smooth_humanizer_handoff"
+  ]
+}

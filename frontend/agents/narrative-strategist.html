@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative Strategist Agent | BusinessBuildAgenticSystem</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <style>
+        .narrative-strategist-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .agent-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .agent-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .agent-header .subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        /* Analysis Dashboard */
+        .analysis-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #657786;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-trend {
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .trend-up {
+            color: #17bf63;
+        }
+
+        .trend-down {
+            color: #e0245e;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1e8ed;
+        }
+
+        .tab-button {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 1em;
+            color: #657786;
+            transition: all 0.3s;
+        }
+
+        .tab-button:hover {
+            color: #667eea;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Analysis Section */
+        .analysis-section {
+            background: white;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1c2938;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: all 0.3s;
+        }
+
+        .action-button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .action-button.secondary {
+            background: #e1e8ed;
+            color: #1c2938;
+        }
+
+        .action-button.secondary:hover {
+            background: #cbd6dd;
+        }
+
+        /* Positioning Input */
+        .positioning-form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1c2938;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-hint {
+            font-size: 0.85em;
+            color: #657786;
+            margin-top: 5px;
+        }
+
+        /* Pattern Cards */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .pattern-card {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .pattern-card.positive {
+            border-left-color: #17bf63;
+        }
+
+        .pattern-card.warning {
+            border-left-color: #ff9800;
+        }
+
+        .pattern-card.opportunity {
+            border-left-color: #2196f3;
+        }
+
+        .pattern-icon {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .pattern-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1c2938;
+        }
+
+        .pattern-description {
+            font-size: 0.9em;
+            color: #657786;
+            margin-bottom: 10px;
+        }
+
+        .pattern-action {
+            font-size: 0.85em;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* Messaging Framework */
+        .framework-template {
+            background: #f8f9fa;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .template-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .template-structure {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-size: 0.9em;
+        }
+
+        .template-example {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #2196f3;
+            margin-top: 10px;
+        }
+
+        .example-label {
+            font-weight: bold;
+            color: #1c2938;
+            margin-bottom: 8px;
+        }
+
+        /* Evolution Timeline */
+        .evolution-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 12px;
+            width: 2px;
+            height: calc(100% - 12px);
+            background: #e1e8ed;
+        }
+
+        .timeline-item:last-child:after {
+            display: none;
+        }
+
+        .timeline-date {
+            font-size: 0.85em;
+            color: #657786;
+            margin-bottom: 5px;
+        }
+
+        .timeline-version {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .timeline-change {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .change-label {
+            font-weight: 500;
+            color: #1c2938;
+            margin-bottom: 5px;
+        }
+
+        .change-content {
+            font-size: 0.9em;
+            color: #657786;
+        }
+
+        /* Recommendation Cards */
+        .recommendation-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .rec-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .rec-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1c2938;
+        }
+
+        .confidence-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .confidence-high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .confidence-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .confidence-low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .rec-section {
+            margin-bottom: 15px;
+        }
+
+        .rec-section-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .rec-content {
+            color: #657786;
+            line-height: 1.6;
+        }
+
+        .rec-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* Quality Score */
+        .quality-score {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+        }
+
+        .score-high {
+            background: #17bf63;
+        }
+
+        .score-medium {
+            background: #ff9800;
+        }
+
+        .score-low {
+            background: #e0245e;
+        }
+
+        .score-label {
+            font-size: 0.9em;
+            color: #657786;
+        }
+
+        /* Processing Overlay */
+        .processing-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .processing-overlay.active {
+            display: flex;
+        }
+
+        .processing-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e1e8ed;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .processing-text {
+            font-size: 1.1em;
+            color: #1c2938;
+        }
+
+        /* Export Button */
+        .export-section {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .export-button {
+            padding: 10px 20px;
+            background: #17bf63;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+
+        .export-button:hover {
+            background: #0f9d4e;
+        }
+
+        /* Message Matrix */
+        .message-matrix {
+            overflow-x: auto;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            padding: 12px;
+            border: 1px solid #e1e8ed;
+            text-align: left;
+        }
+
+        .matrix-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        .matrix-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .analysis-dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-nav {
+                flex-wrap: wrap;
+            }
+
+            .quality-score {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="narrative-strategist-container">
+        <!-- Header -->
+        <div class="agent-header">
+            <h1>📝 Narrative Strategist Agent</h1>
+            <p class="subtitle">Evolve brand messaging and positioning through data-driven strategy</p>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="analysis-dashboard">
+            <div class="stat-card">
+                <div class="stat-label">Positioning Version</div>
+                <div class="stat-value">v3.2</div>
+                <div class="stat-trend trend-up">↑ Updated Dec 2025</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Proof Alignment</div>
+                <div class="stat-value">92%</div>
+                <div class="stat-trend trend-up">↑ +7% this quarter</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Message Frameworks</div>
+                <div class="stat-value">8</div>
+                <div class="stat-trend">Active frameworks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Clarity Score</div>
+                <div class="stat-value">8.4</div>
+                <div class="stat-trend trend-up">↑ Above target (8.0)</div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="analyze">Analyze Positioning</button>
+            <button class="tab-button" data-tab="frameworks">Messaging Frameworks</button>
+            <button class="tab-button" data-tab="evolution">Brand Evolution</button>
+            <button class="tab-button" data-tab="patterns">Pattern Detection</button>
+            <button class="tab-button" data-tab="recommendations">Recommendations</button>
+        </div>
+
+        <!-- Tab: Analyze Positioning -->
+        <div id="analyze" class="tab-content active">
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2 class="section-title">Current Positioning Analysis</h2>
+                    <button class="action-button" onclick="runAnalysis()">Run Analysis</button>
+                </div>
+
+                <form class="positioning-form">
+                    <div class="form-group">
+                        <label for="targetAudience">Target Audience</label>
+                        <input type="text" id="targetAudience" placeholder="e.g., Aspiring coaches with expertise but no clients">
+                        <span class="form-hint">Be specific - demographics, psychographics, and current state</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="currentPositioning">Current Positioning Statement</label>
+                        <textarea id="currentPositioning" placeholder="I help [audience] achieve [outcome] in [timeframe] without [pain]"></textarea>
+                        <span class="form-hint">Your current one-sentence positioning claim</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uniqueMechanism">Unique Mechanism</label>
+                        <input type="text" id="uniqueMechanism" placeholder="e.g., The Proof-First Framework">
+                        <span class="form-hint">What makes your approach different?</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marketSophistication">Market Sophistication Level</label>
+                        <select id="marketSophistication">
+                            <option value="1">Level 1 - Unaware (Introduce problem)</option>
+                            <option value="2">Level 2 - Problem Aware (Amplify pain)</option>
+                            <option value="3" selected>Level 3 - Solution Aware (Show mechanism)</option>
+                            <option value="4">Level 4 - Product Aware (Differentiate)</option>
+                            <option value="5">Level 5 - Most Aware (Next level)</option>
+                        </select>
+                        <span class="form-hint">How sophisticated is your audience about solutions?</span>
+                    </div>
+                </form>
+
+                <!-- Quality Score Display -->
+                <div class="quality-score" id="qualityScoreDisplay" style="display: none;">
+                    <div class="score-item">
+                        <div class="score-circle score-high">8.2</div>
+                        <div class="score-label">Specificity</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-circle score-high">9.1</div>
+                        <div class="score-label">Credibility</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-circle score-medium">7.5</div>
+                        <div class="score-label">Differentiation</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-circle score-high">8.8</div>
+                        <div class="score-label">Memorability</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-circle score-high">9.2</div>
+                        <div class="score-label">Proof Alignment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Messaging Frameworks -->
+        <div id="frameworks" class="tab-content">
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2 class="section-title">Messaging Frameworks</h2>
+                    <button class="action-button secondary" onclick="createNewFramework()">Create New Framework</button>
+                </div>
+
+                <!-- Transformation Statement -->
+                <div class="framework-template">
+                    <div class="template-name">The Transformation Statement</div>
+                    <div class="template-structure">I help [specific audience]
+go from [frustrating current state]
+to [desired future state]
+in [timeframe]
+without [common objection/pain]
+using [unique mechanism]</div>
+                    <div class="template-example">
+                        <div class="example-label">Example:</div>
+                        I help aspiring coaches<br>
+                        go from unclear positioning and zero clients<br>
+                        to 5-figure months with a waitlist<br>
+                        in 90 days<br>
+                        without paid ads or complex funnels<br>
+                        using the Proof-First Framework
+                    </div>
+                </div>
+
+                <!-- Authority Claim -->
+                <div class="framework-template">
+                    <div class="template-name">The Authority Claim</div>
+                    <div class="template-structure">[Number] [audience] have achieved [result] using [method]</div>
+                    <div class="template-example">
+                        <div class="example-label">Example:</div>
+                        67 coaches have built 6-figure practices in under 6 months using the Narrative Stack
+                    </div>
+                </div>
+
+                <!-- Belief Shift -->
+                <div class="framework-template">
+                    <div class="template-name">The Belief Shift</div>
+                    <div class="template-structure">Most people think [common belief]
+But the truth is [counter-intuitive truth]
+That's why [your approach] works</div>
+                    <div class="template-example">
+                        <div class="example-label">Example:</div>
+                        Most people think you need a big audience to make money<br>
+                        But the truth is 100 engaged followers beats 10,000 passive ones<br>
+                        That's why our clients focus on depth, not reach
+                    </div>
+                </div>
+
+                <!-- Message Matrix -->
+                <div class="message-matrix">
+                    <h3>Message Matrix by Audience Segment</h3>
+                    <table class="matrix-table">
+                        <thead>
+                            <tr>
+                                <th>Audience</th>
+                                <th>Hook Type</th>
+                                <th>Proof Type</th>
+                                <th>CTA Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cold (Unaware)</strong></td>
+                                <td>Problem awareness</td>
+                                <td>Volume</td>
+                                <td>Low commitment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Warm (Solution-aware)</strong></td>
+                                <td>New insight</td>
+                                <td>Mechanism proof</td>
+                                <td>Medium commitment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hot (Product-aware)</strong></td>
+                                <td>Next-level opportunity</td>
+                                <td>Advanced results</td>
+                                <td>High commitment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Brand Evolution -->
+        <div id="evolution" class="tab-content">
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2 class="section-title">Brand Evolution Timeline</h2>
+                    <button class="action-button secondary">Download Full History</button>
+                </div>
+
+                <div class="evolution-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">December 2025</div>
+                        <div class="timeline-version">Version 3.2 (Current)</div>
+                        <div class="timeline-change">
+                            <div class="change-label">Positioning Shift:</div>
+                            <div class="change-content">FROM: "The Systems Coach" → TO: "The Speed-to-Results Coach"</div>
+                        </div>
+                        <div class="timeline-change">
+                            <div class="change-label">Trigger:</div>
+                            <div class="change-content">80% of Q4 testimonials emphasized fast wins over comprehensive systems</div>
+                        </div>
+                        <div class="timeline-change">
+                            <div class="change-label">Key Changes:</div>
+                            <div class="change-content">Added "30-day transformation" timeframe, strengthened social proof volume</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">September 2025</div>
+                        <div class="timeline-version">Version 3.1</div>
+                        <div class="timeline-change">
+                            <div class="change-label">Positioning Shift:</div>
+                            <div class="change-content">FROM: "Business Coach" → TO: "The Systems Coach"</div>
+                        </div>
+                        <div class="timeline-change">
+                            <div class="change-label">Trigger:</div>
+                            <div class="change-content">Pattern detected: 60% of client wins involved implementing systems vs general coaching</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 2025</div>
+                        <div class="timeline-version">Version 3.0</div>
+                        <div class="timeline-change">
+                            <div class="change-label">Major Pivot:</div>
+                            <div class="change-content">FROM: "Marketing Consultant" → TO: "Business Coach for Creators"</div>
+                        </div>
+                        <div class="timeline-change">
+                            <div class="change-label">Trigger:</div>
+                            <div class="change-content">Audience analysis showed 85% of inquiries from content creators, not traditional businesses</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button class="export-button" onclick="exportEvolution()">📊 Export Evolution Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Pattern Detection -->
+        <div id="patterns" class="tab-content">
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2 class="section-title">Detected Patterns</h2>
+                    <button class="action-button" onclick="detectPatterns()">Refresh Patterns</button>
+                </div>
+
+                <!-- Positive Signals -->
+                <h3 style="color: #17bf63; margin-top: 20px;">🎯 Positive Signals (Amplify)</h3>
+                <div class="pattern-grid">
+                    <div class="pattern-card positive">
+                        <div class="pattern-icon">🎯</div>
+                        <div class="pattern-title">Proof Clustering Detected</div>
+                        <div class="pattern-description">7 testimonials mention "quick results" - strong theme emerging</div>
+                        <div class="pattern-action">→ Action: Create messaging around speed-to-value</div>
+                    </div>
+                    <div class="pattern-card positive">
+                        <div class="pattern-icon">🚀</div>
+                        <div class="pattern-title">Conversion Spike</div>
+                        <div class="pattern-description">"30-day transformation" messaging showing +78% higher conversion</div>
+                        <div class="pattern-action">→ Action: Make primary positioning angle</div>
+                    </div>
+                    <div class="pattern-card positive">
+                        <div class="pattern-icon">💬</div>
+                        <div class="pattern-title">Language Consistency</div>
+                        <div class="pattern-description">Clients using "Proof-First Framework" organically in referrals</div>
+                        <div class="pattern-action">→ Action: Strengthen framework branding</div>
+                    </div>
+                </div>
+
+                <!-- Warning Signals -->
+                <h3 style="color: #ff9800; margin-top: 30px;">⚠️ Warning Signals (Investigate)</h3>
+                <div class="pattern-grid">
+                    <div class="pattern-card warning">
+                        <div class="pattern-icon">⚠️</div>
+                        <div class="pattern-title">Advanced Content Declining</div>
+                        <div class="pattern-description">Engagement on sophisticated topics down 22% this quarter</div>
+                        <div class="pattern-action">→ Action: Segment advanced content separately</div>
+                    </div>
+                    <div class="pattern-card warning">
+                        <div class="pattern-icon">🔀</div>
+                        <div class="pattern-title">Audience Drift</div>
+                        <div class="pattern-description">More beginners inquiring vs experienced professionals</div>
+                        <div class="pattern-action">→ Action: Adjust messaging to beginner-friendly</div>
+                    </div>
+                </div>
+
+                <!-- Opportunity Signals -->
+                <h3 style="color: #2196f3; margin-top: 30px;">💡 Opportunity Signals (Explore)</h3>
+                <div class="pattern-grid">
+                    <div class="pattern-card opportunity">
+                        <div class="pattern-icon">💡</div>
+                        <div class="pattern-title">Unexpected Win Area</div>
+                        <div class="pattern-description">3 clients achieved success in video content (unmarketed)</div>
+                        <div class="pattern-action">→ Action: Test video-specific positioning</div>
+                    </div>
+                    <div class="pattern-card opportunity">
+                        <div class="pattern-icon">📈</div>
+                        <div class="pattern-title">Emerging Trend</div>
+                        <div class="pattern-description">5 recent testimonials mention AI integration</div>
+                        <div class="pattern-action">→ Action: Explore AI-assisted messaging angle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Recommendations -->
+        <div id="recommendations" class="tab-content">
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2 class="section-title">Strategic Recommendations</h2>
+                    <button class="action-button secondary">View All Recommendations</button>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="rec-header">
+                        <div class="rec-title">Shift to Speed-Based Positioning</div>
+                        <span class="confidence-badge confidence-high">High Confidence</span>
+                    </div>
+                    <div class="rec-section">
+                        <div class="rec-section-title">Evidence:</div>
+                        <div class="rec-content">
+                            • 80% of testimonials (12 of 15) mentioned fast results<br>
+                            • "30-day" messaging showed +78% conversion improvement<br>
+                            • Client language consistently emphasizes speed over comprehensiveness
+                        </div>
+                    </div>
+                    <div class="rec-section">
+                        <div class="rec-section-title">Recommended Action:</div>
+                        <div class="rec-content">
+                            Update primary positioning to emphasize "speed-to-results" while maintaining "systems" as supporting credibility element
+                        </div>
+                    </div>
+                    <div class="rec-section">
+                        <div class="rec-section-title">Implementation:</div>
+                        <div class="rec-content">
+                            • Primary headline: "Get Results in 30 Days"<br>
+                            • Supporting: "Using proven systems that scale"<br>
+                            • Proof angle: Fastest client transformations<br>
+                            • Content theme: "Quick wins" series
+                        </div>
+                    </div>
+                    <div class="rec-actions">
+                        <button class="action-button">Implement Recommendation</button>
+                        <button class="action-button secondary">Schedule A/B Test</button>
+                    </div>
+                </div>
+
+                <div class="recommendation-card">
+                    <div class="rec-header">
+                        <div class="rec-title">Develop Beginner-Focused Messaging</div>
+                        <span class="confidence-badge confidence-medium">Medium Confidence</span>
+                    </div>
+                    <div class="rec-section">
+                        <div class="rec-section-title">Evidence:</div>
+                        <div class="rec-content">
+                            • Inquiry demographic shifted: 65% beginners (was 40%)<br>
+                            • Advanced content engagement down 22%<br>
+                            • Highest converting segment is "aspiring" not "established"
+                        </div>
+                    </div>
+                    <div class="rec-section">
+                        <div class="rec-section-title">Recommended Action:</div>
+                        <div class="rec-content">
+                            Create dual-track messaging: Beginner-friendly primary messaging + Advanced "Mastery Track" separately
+                        </div>
+                    </div>
+                    <div class="rec-actions">
+                        <button class="action-button secondary">Review Details</button>
+                        <button class="action-button secondary">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Overlay -->
+        <div class="processing-overlay" id="processingOverlay">
+            <div class="processing-content">
+                <div class="spinner"></div>
+                <div class="processing-text">Analyzing patterns and generating recommendations...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/session-manager.js"></script>
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+                
+                // Update buttons
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Run Analysis
+        function runAnalysis() {
+            const overlay = document.getElementById('processingOverlay');
+            overlay.classList.add('active');
+            
+            // Simulate analysis
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                document.getElementById('qualityScoreDisplay').style.display = 'grid';
+                alert('Analysis complete! Quality scores updated.');
+            }, 2000);
+        }
+
+        // Detect Patterns
+        function detectPatterns() {
+            const overlay = document.getElementById('processingOverlay');
+            overlay.classList.add('active');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                alert('Pattern detection complete! 8 patterns identified.');
+            }, 1500);
+        }
+
+        // Create New Framework
+        function createNewFramework() {
+            const frameworkName = prompt('Enter framework name:');
+            if (frameworkName) {
+                alert(`Creating new framework: ${frameworkName}`);
+            }
+        }
+
+        // Export Evolution
+        function exportEvolution() {
+            alert('Exporting brand evolution report as CSV...');
+        }
+
+        // Initialize session manager
+        const sessionManager = new SessionManager('narrative-strategist');
+        sessionManager.startSession();
+
+        // Auto-save on input
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('change', () => {
+                sessionManager.saveData({
+                    targetAudience: document.getElementById('targetAudience').value,
+                    positioning: document.getElementById('currentPositioning').value,
+                    mechanism: document.getElementById('uniqueMechanism').value,
+                    sophistication: document.getElementById('marketSophistication').value
+                });
+            });
+        });
+    </script>
+</body>
+</html>
