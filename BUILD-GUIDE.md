@@ -249,7 +249,7 @@ BusinessBuildAgenticSystem/
 
 Then users can simply:
 ```bash
-git clone https://github.com/yourusername/BusinessBuildAgenticSystem.git
+git clone https://github.com/mikemacmurray-afk/int-bus-build-agent-system.git
 cd BusinessBuildAgenticSystem/frontend
 open index.html
 ```

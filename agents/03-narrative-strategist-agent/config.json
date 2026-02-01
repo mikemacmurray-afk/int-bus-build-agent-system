@@ -1,0 +1,441 @@
+{
+  "agent_info": {
+    "name": "Narrative Strategist Agent",
+    "version": "1.0",
+    "pillar": "Narrative",
+    "status": "active",
+    "description": "Evolve brand messaging, positioning, and narrative strategy based on proof patterns and insights"
+  },
+  
+  "analysis_triggers": {
+    "automatic": {
+      "proof_threshold": {
+        "enabled": true,
+        "check_frequency": "weekly",
+        "minimum_new_proof": 3
+      },
+      "brick_threshold": {
+        "enabled": true,
+        "minimum_new_bricks": 10,
+        "quality_filter": 7.5
+      },
+      "calendar": {
+        "enabled": true,
+        "schedule": "monthly",
+        "day_of_month": 1
+      },
+      "performance": {
+        "enabled": true,
+        "metric_change_threshold": 0.15
+      }
+    },
+    "manual": {
+      "user_requests": [
+        "analyze positioning",
+        "review messaging",
+        "brand evolution",
+        "what's working"
+      ]
+    }
+  },
+  
+  "positioning_frameworks": {
+    "transformation_statement": {
+      "template": "I help [audience] go from [current] to [desired] in [timeframe] without [objection] using [mechanism]",
+      "required_elements": ["audience", "current", "desired", "timeframe", "mechanism"],
+      "optional_elements": ["objection"]
+    },
+    "authority_claim": {
+      "template": "[number] [audience] have achieved [result] using [method]",
+      "required_elements": ["number", "audience", "result", "method"]
+    },
+    "belief_shift": {
+      "template": "Most people think [common]. But the truth is [counter]. That's why [approach] works",
+      "required_elements": ["common", "counter", "approach"]
+    },
+    "proof_narrative": {
+      "template": "[name] was [struggle]. After [intervention] they [achieved]. Now they [current]",
+      "required_elements": ["name", "struggle", "intervention", "achieved", "current"]
+    }
+  },
+  
+  "messaging_matrix": {
+    "audience_segments": {
+      "cold": {
+        "awareness_level": 1,
+        "hook_type": "problem_awareness",
+        "proof_type": "volume",
+        "cta_commitment": "low"
+      },
+      "warm": {
+        "awareness_level": 3,
+        "hook_type": "new_insight",
+        "proof_type": "mechanism",
+        "cta_commitment": "medium"
+      },
+      "hot": {
+        "awareness_level": 5,
+        "hook_type": "next_level",
+        "proof_type": "advanced_results",
+        "cta_commitment": "high"
+      }
+    }
+  },
+  
+  "quality_standards": {
+    "positioning_clarity": {
+      "specificity": {
+        "min_score": 8,
+        "weight": 0.2
+      },
+      "credibility": {
+        "min_score": 9,
+        "weight": 0.25
+      },
+      "differentiation": {
+        "min_score": 7,
+        "weight": 0.2
+      },
+      "memorability": {
+        "min_score": 8,
+        "weight": 0.15
+      },
+      "proof_alignment": {
+        "min_score": 9,
+        "weight": 0.2
+      },
+      "overall_threshold": 8.0
+    },
+    "message_effectiveness": {
+      "excellent": {
+        "range": [9, 10],
+        "criteria": ["immediately_clear", "unique_angle", "strong_proof", "audience_language"]
+      },
+      "good": {
+        "range": [7, 8],
+        "criteria": ["clear_in_context", "some_differentiation", "adequate_proof", "uses_audience_language"]
+      },
+      "needs_work": {
+        "range": [4, 6],
+        "criteria": ["requires_explanation", "generic", "weak_proof", "industry_jargon"]
+      },
+      "poor": {
+        "range": [1, 3],
+        "criteria": ["confusing", "commodity", "no_proof", "disconnected"]
+      }
+    }
+  },
+  
+  "pattern_detection": {
+    "positive_signals": {
+      "proof_clustering": {
+        "threshold": 3,
+        "action": "amplify",
+        "description": "Multiple testimonials mention same benefit"
+      },
+      "conversion_spike": {
+        "threshold": 0.2,
+        "action": "analyze",
+        "description": "Specific messaging drives higher conversions"
+      },
+      "language_consistency": {
+        "threshold": 5,
+        "action": "document",
+        "description": "Clients use your terminology organically"
+      },
+      "quality_improvement": {
+        "threshold": "trend",
+        "action": "track",
+        "description": "More sophisticated clients/results over time"
+      }
+    },
+    "warning_signals": {
+      "proof_mismatch": {
+        "threshold": 0.3,
+        "action": "investigate",
+        "description": "What you claim differs from what clients praise"
+      },
+      "declining_engagement": {
+        "threshold": -0.15,
+        "action": "review",
+        "description": "Core messaging gets less response"
+      },
+      "audience_drift": {
+        "threshold": "qualitative",
+        "action": "segment_analysis",
+        "description": "Attracting wrong segment"
+      },
+      "copycat_messaging": {
+        "threshold": "competitive_scan",
+        "action": "differentiate",
+        "description": "Competitors using your positioning"
+      }
+    },
+    "opportunity_signals": {
+      "unexpected_wins": {
+        "threshold": "outlier",
+        "action": "explore",
+        "description": "Success in unexpected area"
+      },
+      "unsolicited_mentions": {
+        "threshold": 3,
+        "action": "investigate",
+        "description": "Clients highlight unmarketed benefits"
+      },
+      "emerging_pattern": {
+        "threshold": 5,
+        "action": "test",
+        "description": "New trend in recent proof"
+      },
+      "sophistication_increase": {
+        "threshold": "trend",
+        "action": "advance_positioning",
+        "description": "Audience ready for advanced positioning"
+      }
+    }
+  },
+  
+  "metrics_tracking": {
+    "positioning_health": {
+      "clarity_score": {
+        "target": 8,
+        "measurement": "5_second_test"
+      },
+      "proof_alignment": {
+        "target": 0.9,
+        "measurement": "claims_with_proof"
+      },
+      "differentiation_index": {
+        "target": 3,
+        "measurement": "unique_positioning_elements"
+      },
+      "message_consistency": {
+        "target": 0.8,
+        "measurement": "content_using_frameworks"
+      }
+    },
+    "performance_indicators": {
+      "conversion_rate": {
+        "action_threshold": 0.02,
+        "action": "review_messaging"
+      },
+      "engagement_rate": {
+        "action_threshold": 0.03,
+        "action": "adjust_content"
+      },
+      "testimonial_themes": {
+        "action_threshold": 5,
+        "action": "create_messaging_opportunity"
+      },
+      "objection_frequency": {
+        "action_threshold": 3,
+        "action": "address_in_positioning"
+      }
+    }
+  },
+  
+  "market_sophistication_levels": {
+    "level_1_unaware": {
+      "message_focus": "introduce_problem",
+      "proof_type": "problem_commonality",
+      "cta": "learn_more"
+    },
+    "level_2_problem_aware": {
+      "message_focus": "amplify_pain",
+      "proof_type": "cost_of_inaction",
+      "cta": "explore_solutions"
+    },
+    "level_3_solution_aware": {
+      "message_focus": "unique_mechanism",
+      "proof_type": "mechanism_superiority",
+      "cta": "get_mechanism"
+    },
+    "level_4_product_aware": {
+      "message_focus": "differentiation",
+      "proof_type": "comparative_case_studies",
+      "cta": "choose_you"
+    },
+    "level_5_most_aware": {
+      "message_focus": "next_level_opportunity",
+      "proof_type": "advanced_transformations",
+      "cta": "next_level_program"
+    }
+  },
+  
+  "analysis_process": {
+    "step_1_data_collection": {
+      "credibility_library": {
+        "testimonials_window": "90_days",
+        "case_studies_window": "180_days",
+        "metrics": "all_time_plus_trends"
+      },
+      "voice_codex": {
+        "insights_min_quality": 7.5,
+        "metaphors_min_memorability": 8.0,
+        "distinctions": "all"
+      },
+      "current_brand": {
+        "positioning_statement": true,
+        "messaging_frameworks": true,
+        "content_themes": true
+      }
+    },
+    "step_2_pattern_extraction": {
+      "proof_patterns": [
+        "frequent_results",
+        "client_language",
+        "objections_overcome",
+        "timeframes_mentioned"
+      ],
+      "insight_patterns": [
+        "recurring_themes",
+        "resonant_metaphors",
+        "clarifying_distinctions"
+      ]
+    },
+    "step_3_gap_analysis": {
+      "compare": [
+        "current_positioning",
+        "proof_reality"
+      ],
+      "identify_gaps": true,
+      "assess_severity": true
+    },
+    "step_4_strategy_recommendation": {
+      "output_fields": [
+        "current_state",
+        "proof_evidence",
+        "recommended_shift",
+        "implementation_plan",
+        "ab_test_suggestion"
+      ]
+    }
+  },
+  
+  "integration": {
+    "from_credibility_agent": {
+      "receives": [
+        "new_proof_assets",
+        "proof_categorization",
+        "performance_metrics"
+      ],
+      "actions": [
+        "analyze_patterns",
+        "identify_positioning_themes",
+        "recommend_messaging_shifts"
+      ]
+    },
+    "from_voice_codex_agent": {
+      "receives": [
+        "narrative_bricks",
+        "theme_clustering",
+        "quality_scores"
+      ],
+      "actions": [
+        "convert_to_messaging",
+        "identify_voice_evolution",
+        "suggest_content_positioning"
+      ]
+    },
+    "to_content_engine_agent": {
+      "provides": [
+        "messaging_frameworks",
+        "positioning_guidelines",
+        "content_theme_recommendations",
+        "language_style_guides"
+      ]
+    },
+    "to_humanizer_agent": {
+      "provides": [
+        "brand_voice_characteristics",
+        "authenticity_markers",
+        "language_patterns_to_preserve"
+      ]
+    }
+  },
+  
+  "output_formats": {
+    "positioning_document": {
+      "sections": [
+        "primary_positioning",
+        "target_audience",
+        "core_transformation",
+        "unique_mechanism",
+        "proof_pattern",
+        "key_messages",
+        "language_style",
+        "content_themes"
+      ]
+    },
+    "message_testing_report": {
+      "sections": [
+        "hypothesis",
+        "setup",
+        "results",
+        "insights",
+        "recommendation"
+      ]
+    },
+    "quarterly_brand_evolution": {
+      "sections": [
+        "changes_this_quarter",
+        "positioning_shifts",
+        "messaging_updates",
+        "proof_patterns",
+        "strategic_recommendations"
+      ]
+    }
+  },
+  
+  "storage_paths": {
+    "sessions": "knowledge-base/sessions/narrative-strategist/",
+    "persistent": {
+      "positioning": "knowledge-base/persistent/brand-evolution/positioning/",
+      "messaging": "knowledge-base/persistent/brand-evolution/messaging/",
+      "analysis": "knowledge-base/persistent/brand-evolution/analysis/",
+      "strategies": "knowledge-base/persistent/brand-evolution/strategies/"
+    }
+  },
+  
+  "file_naming": {
+    "positioning": "positioning-v{version}-{YYYY-MM}.md",
+    "messaging_framework": "messaging-framework-{name}.md",
+    "messaging_matrix": "messaging-matrix-{YYYY-QQ}.md",
+    "proof_pattern_analysis": "proof-pattern-analysis-{YYYY-MM}.md",
+    "message_testing": "message-testing-{YYYY-QQ}.md",
+    "brand_evolution": "brand-evolution-{YYYY-QQ}.md",
+    "strategy_recommendation": "strategy-recommendation-{YYYY-MM-DD}.md",
+    "implemented_strategies": "implemented-strategies-{YYYY}.md"
+  },
+  
+  "features": {
+    "pattern_detection": true,
+    "positioning_evolution_tracking": true,
+    "messaging_framework_generation": true,
+    "ab_testing_recommendations": true,
+    "market_sophistication_analysis": true,
+    "proof_message_alignment": true,
+    "quarterly_strategic_reviews": true,
+    "competitive_positioning_analysis": false
+  },
+  
+  "workflow": {
+    "monthly_strategic_review": {
+      "week_1": "data_collection",
+      "week_2": "pattern_analysis",
+      "week_3": "strategy_development",
+      "week_4": "implementation_handoff"
+    }
+  },
+  
+  "success_criteria": [
+    "positioning_is_proof_backed",
+    "messaging_converts",
+    "brand_evolves_intentionally",
+    "language_resonates",
+    "differentiation_is_clear",
+    "strategy_is_actionable",
+    "evolution_is_documented",
+    "patterns_detected_early"
+  ]
+}

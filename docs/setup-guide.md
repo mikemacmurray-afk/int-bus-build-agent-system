@@ -18,7 +18,7 @@ Before starting, ensure you have:
 cd C:\Users\YourUsername\Documents
 
 # Clone the repository
-git clone https://github.com/mikemacmurray-afk/BusinessBuildAgenticSystem.git
+git clone https://github.com/mikemacmurray-afk/int-bus-build-agent-system.git
 
 # Navigate into the directory
 cd BusinessBuildAgenticSystem
